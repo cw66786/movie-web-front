@@ -20,7 +20,25 @@
   margin-left: 3%;
 }
 
-.signIn-btn {
+.user-container {
+  height: 100%;
+  width: 50%;
+  margin-right: 3%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.username {
+font-size: 1.25rem;
+margin-right: 15px;
+margin-top: 8px;
+text-decoration: underline;
+color: #e50914;
+}
+
+.header-btn {
   background-color: #e50914;
   font-size: 1rem;
   font-weight: bold;
@@ -28,7 +46,18 @@
   padding: 7px 17px;
   border-radius: 5px;
   color: #fff;
-  margin-right: 3%;
+  
 
   cursor: pointer;
 }
+
+
+@media (max-width: 430px) {
+  .header {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+
+

@@ -1,4 +1,8 @@
 <div class="header">
   <span class="logo"><img src="assets\pics and logo\Logo.png"/></span>
-  <a class="signIn-btn">Sign In</a>
+ <div class="user-container">
+  <a class="header-btn" *ngIf="isLoggedIn === false">Sign In</a>
+  <span class="username" *ngIf="isLoggedIn === true">{{userName}}</span>
+    <a class="header-btn" *ngIf="isLoggedIn === true">Log Out</a>
+  </div>
 </div>
