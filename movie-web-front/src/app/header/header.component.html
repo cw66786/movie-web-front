@@ -2,7 +2,7 @@
   <span class="logo"><img src="assets\pics and logo\Logo.png"/></span>
  <div class="user-container">
   <a class="header-btn" *ngIf="isLoggedIn === false">Sign In</a>
-  <span class="username" *ngIf="isLoggedIn === true">{{userName}}</span>
+  <span class="username" *ngIf="isLoggedIn === true">User: <span class="user">{{userName}}</span></span>
     <a class="header-btn" *ngIf="isLoggedIn === true">Log Out</a>
   </div>
 </div>

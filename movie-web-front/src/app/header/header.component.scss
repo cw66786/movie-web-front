@@ -34,7 +34,7 @@
 font-size: 1.25rem;
 margin-right: 15px;
 margin-top: 8px;
-text-decoration: underline;
+
 color: #e50914;
 }
 
@@ -49,6 +49,10 @@ color: #e50914;
   
 
   cursor: pointer;
+}
+
+.user {
+  text-decoration: underline;
 }
 
 
