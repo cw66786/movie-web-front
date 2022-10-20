@@ -6,11 +6,11 @@
 }
 
 .wrapper {
-  height: 150vh;
-  width: 100vw;
   background-color: #000;
   direction: ltr;
-  overflow: hidden;
+  overflow-x: hidden;
+  width: 100vw;
+  margin-bottom: 30px;
 }
 
 .main-img-wrapper {
@@ -19,7 +19,14 @@
   right: 0;
   top: 0;
   height: 733.4px;
-  background-image: linear-gradient(0deg,rgba(0,0,0,.8) 0,transparent 60%,rgba(0,0,0,.8));
+  min-height: 733.4px;
+  background-image: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.8) 0,
+    transparent 60%,
+    rgba(0, 0, 0, 0.8)
+  );
+  border-bottom: 8px solid #222;
 }
 
 .landing-img {
@@ -27,26 +34,52 @@
   object-fit: cover;
   width: 100%;
 }
-.img-gradient{
-    position: absolute;
+.img-gradient {
+  position: absolute;
   left: 0;
   right: 0;
   top: 0;
   height: 733.4px;
-  background-image: linear-gradient(0deg,rgba(0,0,0,.8) 0,transparent 60%,rgba(0,0,0,.8));
-  z-index: 2;
+  background: rgba(0,0,0,.4);
+  background-image: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.8) 0,
+    transparent 60%,
+    rgba(0, 0, 0, 0.8)
+  );
+  
 }
 
+.hero-card-container {
+  margin: 0 auto;
+  max-width: 950px;
+  padding: 200px 45px;
+  position: relative;
+  text-align: center;
+  width: 100%;
+  z-index: 1;
+}
+
+.cards-wrapper {
+  min-height: fit-content;
+  min-width: 100vw;
+  position: absolute;
+  top: 740px;
+  left: 0;
+  background-color: #000;
+}
 .our-story-card {
   background: transparent;
   border-bottom: 8px solid #222;
   margin-bottom: 0;
   position: relative;
-  padding: 70px 45px;
+
+  padding: 75px 0;
+  position: relative;
 }
 
 .animation-card-container,
-.animation-card-container-tile2 {
+.animation-card-container-flipped {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -54,7 +87,7 @@
   max-width: 1100px;
 }
 
-.animation-card-container-tile2 {
+.animation-card-container-flipped {
   flex-flow: row-reverse;
 }
 
@@ -164,6 +197,7 @@
 
 .stranger-things {
   height: 4.5em;
+  width: auto;
 }
 
 .our-story-card-animation-custom {
@@ -223,6 +257,6 @@
   }
 
   .stranger-things {
-    display: none;
+    margin-right: 8px;
   }
 }
