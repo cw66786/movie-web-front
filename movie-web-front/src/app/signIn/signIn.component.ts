@@ -10,11 +10,11 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 }
 
 @Component({
-  selector: 'app-sign-up',
-  templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.scss']
+  selector: 'app-signIn',
+  templateUrl: './signIn.component.html',
+  styleUrls: ['./signIn.component.scss']
 })
-export class SignUpComponent implements OnInit {
+export class SignInComponent implements OnInit {
   hide: boolean = true;
 
   

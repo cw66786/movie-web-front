@@ -13,7 +13,7 @@ import { FooterComponent } from './footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { HeroComponent } from './home/hero/hero.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
+import { SignInComponent } from './signIn/signIn.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     FooterComponent,
     HomeComponent,
     HeroComponent,
-    SignUpComponent
+    SignInComponent
     
   ],
   imports: [
