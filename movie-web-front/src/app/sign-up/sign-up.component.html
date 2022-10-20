@@ -1,5 +1,5 @@
 <div class="wrapper">
-    
+    <div class="background">
     <img
     class="background-img"
     src="https://assets.nflxext.com/ffe/siteui/vlv3/79fe83d4-7ef6-4181-9439-46db72599559/be1d82ef-72c1-4a2a-8c16-5170169f9ef8/US-en-20221017-popsignuptwoweeks-perspective_alpha_website_small.jpg"
@@ -9,10 +9,12 @@
       https://assets.nflxext.com/ffe/siteui/vlv3/79fe83d4-7ef6-4181-9439-46db72599559/be1d82ef-72c1-4a2a-8c16-5170169f9ef8/US-en-20221017-popsignuptwoweeks-perspective_alpha_website_large.jpg  1800w
     "
   />
+</div>
+<div class="spacing-wrapper">
   <mat-card class="card">
-    <mat-card-title>Sign Up</mat-card-title>
+    <mat-card-title class="card-title">Sign Up</mat-card-title>
     <form class="signIn-form" >
-        <mat-form-field class="email" appearance="fill">
+        <mat-form-field appearance="fill">
           <mat-label>Email</mat-label>
           <input type="email" matInput [formControl]="email" [errorStateMatcher]="matcher"
                  placeholder="Ex. craig@example.com">
@@ -23,13 +25,16 @@
           <mat-error *ngIf="email.hasError('email')">
             Email is <strong>required</strong>
           </mat-error>
+          
         </mat-form-field>
-        <mat-form-field>
-            <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="password" required>
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+            <input matInput placeholder="Enter You're Password" [type]="hide ? 'password' : 'text'" [formControl]="password" required>
             <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'Show' : 'Hide'}}</mat-icon>
-            <mat-hint *ngIf="!password.value">Enter your password</mat-hint>
+            
         </mat-form-field>
       </form>
       
   </mat-card>
+</div>
 </div>
