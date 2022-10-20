@@ -1,3 +1,5 @@
-<app-header></app-header>
 
-<app-footer></app-footer>
+  <app-header></app-header>
+  <app-home></app-home>
+  <app-footer *ngIf="router.url === '/signUp'"></app-footer>
+
