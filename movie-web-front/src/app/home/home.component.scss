@@ -53,7 +53,7 @@
 .hero-card-container {
   margin: 0 auto;
   max-width: 950px;
-  padding: 200px 45px;
+  padding: 200px 0px;
   position: relative;
   text-align: center;
   width: 100%;
@@ -227,15 +227,17 @@
 }
 
 @media (max-width: 900px) {
+
+  
   .animation-card-container,
-  .animation-card-container-tile2 {
+  .animation-card-container-flipped {
     flex-flow: column;
   }
 
   .our-story-card-text {
     text-align: center;
     width: 100%;
-    margin: 0.75em 0 0.25em;
+    margin: 0.75em 0.5em;
     padding: 0;
   }
 

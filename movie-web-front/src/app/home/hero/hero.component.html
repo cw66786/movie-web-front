@@ -5,7 +5,7 @@
   <h2  class="subtitle" >
     Watch anywhere. Cancel anytime.
   </h2>
-  <form class="email-form" >
+  <form class="email-form" (ngSubmit)="onSubmit()" >
     <h3 class="email-form-title">
       Ready to watch? Enter your email to create or restart your membership.
     </h3>
@@ -14,7 +14,7 @@
             <div class="input-wrapper">
               
                 <input
-                  type="email"
+                 
                   
                   class="email-input"
                   
@@ -25,8 +25,8 @@
                   minlength="5"
                   placeholder="Email Address"
                 />
-               
-                <button mat-flat-button class="email-btn">Get Started ></button>
+              
+                <button mat-flat-button class="email-btn" type="submit" >Get Started ></button>
             </div>
           
         
