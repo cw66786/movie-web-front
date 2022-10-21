@@ -1,6 +1,12 @@
-<div class="footer">
+<div class="footer" 
+ [style.background-color]="router.url ==='/register' ? '#f3f3f3': 'rgba(0,0,0,.75)'"
+ 
+>
   <span class="creator"
+  
     >Created by
-    <a href="https://github.com/cw66786" target="_blank">Craig Wilson</a></span
+    <a href="https://github.com/cw66786" target="_blank" 
+    [style.color]="router.url === '/register' ? '#e50914' : '#fff'"
+    >Craig Wilson</a></span
   >
 </div>

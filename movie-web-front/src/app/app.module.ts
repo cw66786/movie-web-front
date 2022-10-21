@@ -15,6 +15,7 @@ import { HomeComponent } from './home/home.component';
 import { HeroComponent } from './home/hero/hero.component';
 import { SignInComponent } from './signIn/signIn.component';
 import { RegisterComponent } from './register/register.component';
+import { StepperFormComponent } from './register/stepper-form/stepper-form.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { RegisterComponent } from './register/register.component';
     HomeComponent,
     HeroComponent,
     SignInComponent,
-    RegisterComponent
+    RegisterComponent,
+    StepperFormComponent
     
   ],
   imports: [
