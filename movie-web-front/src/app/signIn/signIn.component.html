@@ -12,8 +12,8 @@
   </div>
   <div class="spacing-wrapper">
     <mat-card class="card">
-      <mat-card-title class="card-title">Sign Up</mat-card-title>
       <form class="signIn-form">
+        <mat-card-title class="card-title">Sign In</mat-card-title>
         <mat-form-field appearance="fill">
           <mat-label>Email</mat-label>
           <input
@@ -24,14 +24,12 @@
             placeholder="Ex. craig@example.com"
           />
 
-          <mat-error
+          <mat-error 
             *ngIf="email.hasError('email') && !email.hasError('required')"
           >
             Please enter a valid email address
           </mat-error>
-          <mat-error *ngIf="email.hasError('email')">
-            Email is <strong>required</strong>
-          </mat-error>
+        
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>Password</mat-label>
@@ -43,9 +41,11 @@
             required
           />
           <mat-icon matSuffix (click)="hide = !hide">{{
-            hide ? "Show" : "Hide"
+            hide ? "visibility" : "visibility_off"
           }}</mat-icon>
         </mat-form-field>
+        <button mat-flat-button color="primary">Sign In</button>
+        <span class="register-hint">New to Craig's-Flix? <a routerLink="register">Sign up now</a>.</span>
       </form>
     </mat-card>
   </div>
