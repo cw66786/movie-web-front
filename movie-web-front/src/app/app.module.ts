@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { HeroComponent } from './home/hero/hero.component';
 import { SignInComponent } from './signIn/signIn.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SignInComponent } from './signIn/signIn.component';
     FooterComponent,
     HomeComponent,
     HeroComponent,
-    SignInComponent
+    SignInComponent,
+    RegisterComponent
     
   ],
   imports: [
