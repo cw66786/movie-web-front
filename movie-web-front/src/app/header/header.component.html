@@ -1,8 +1,8 @@
 <div class="header">
   <div class="logo" routerLink="home"><img src="assets\pics and logo\Logo.png"/></div>
  <div class="user-container">
-  <a class="header-btn" *ngIf="isLoggedIn === false" routerLink="signIn">Sign In</a>
+  <a class="header-btn"  *ngIf="isLoggedIn === false" routerLink="signIn">Sign In</a>
   <span class="username" *ngIf="isLoggedIn === true">User: <span class="user">{{userName}}</span></span>
-    <a class="header-btn" *ngIf="isLoggedIn === true">Log Out</a>
+    <a class="header-btn" (click)="this.isLoggedIn = !this.isLoggedIn" *ngIf="isLoggedIn === true">Log Out</a>
   </div>
 </div>
