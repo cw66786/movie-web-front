@@ -1,0 +1,62 @@
+.wrapper {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.card {
+  height: calc(100vh - 5rem - 40px);
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0;
+  margin: 0;
+}
+
+.form-wrapper {
+  height: calc(100vh - 5rem - 130px);
+  width: 960px;
+ 
+}
+
+.logo-container {
+  height: 20%;
+  width: 100%;
+  margin-top: 20px;
+  
+}
+
+.img-span {
+  display: block;
+  background: url(https://assets.nflxext.com/ffe/siteui/acquisition/simplicity/Devices.png)
+    no-repeat 50% 50%;
+
+  background-size: 260px;
+  height: 90px;
+  
+}
+
+@media (max-width: 900px) {
+
+  .form-wrapper{
+    width: 100vw;
+  }
+
+  
+}
+
+@media (max-height: 870px) and (max-width: 900px) {
+  
+  .card{
+    height: calc(100vh - 5rem);
+  }
+
+ .logo-container{
+  margin-top: 5px;
+ }
+   
+ }

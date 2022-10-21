@@ -5,6 +5,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon'; 
+import {MatStepperModule} from '@angular/material/stepper';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +16,7 @@ import { HomeComponent } from './home/home.component';
 import { HeroComponent } from './home/hero/hero.component';
 import { SignInComponent } from './signIn/signIn.component';
 import { RegisterComponent } from './register/register.component';
+import { StepperFormComponent } from './register/stepper-form/stepper-form.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { RegisterComponent } from './register/register.component';
     HomeComponent,
     HeroComponent,
     SignInComponent,
-    RegisterComponent
+    RegisterComponent,
+    StepperFormComponent
     
   ],
   imports: [
@@ -36,7 +39,8 @@ import { RegisterComponent } from './register/register.component';
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
-    MatIconModule
+    MatIconModule,
+    MatStepperModule
     
   ],
   providers: [],
