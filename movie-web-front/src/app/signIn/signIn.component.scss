@@ -36,6 +36,7 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  
   align-items: center;
   margin-bottom: 0px;
   height: 660px;
@@ -46,8 +47,9 @@
   font-size: 32px;
   font-weight: 500;
   margin-bottom: 28px;
-  text-align: center;
+  text-align: left;
   width: 80%;
+  margin-top: 50px;
 }
 
 .signIn-form {
@@ -68,7 +70,7 @@ mat-form-field{
       
       background-color: #333;
       width: 100%;
-    
+      margin: 12px 0;
     
 }
 
@@ -93,3 +95,37 @@ mat-label {
   transform: translateY(-50%);
   transition: font 0.1s ease, top 0.1s ease, transform 0.1s ease;
 }
+
+mat-icon {
+  color: #8c8c8c;
+}
+
+mat-error{
+  color: red;
+}
+
+button {
+  height: 50px;
+  margin: 24px 0;
+  font-size: 1rem;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-hint{
+  color: #757575;
+  font-size: 1rem;
+  margin-top: 50px;
+}
+
+
+a {
+  text-decoration: none;
+  color: #fff;
+  }
+  
+  a:hover {
+      text-decoration: underline;
+  }

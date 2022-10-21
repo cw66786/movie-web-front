@@ -15,7 +15,7 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$movie-web-front-primary: mat.define-palette(mat.$indigo-palette);
+$movie-web-front-primary: mat.define-palette(mat.$red-palette, 600);
 $movie-web-front-accent: mat.define-palette(
   mat.$pink-palette,
   A200,
