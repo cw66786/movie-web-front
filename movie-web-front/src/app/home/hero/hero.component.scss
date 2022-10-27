@@ -51,6 +51,18 @@
     color: #fff;
   }
 
+  .error-holder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  mat-error {
+    color: red;
+    
+  }
+
 
   @media (max-width: 900px) {
     .title{

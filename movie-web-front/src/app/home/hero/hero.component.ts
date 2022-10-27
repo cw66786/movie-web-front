@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { RouterModule, Routes, Router } from '@angular/router';
 @Component({
   selector: 'app-hero',
@@ -7,7 +8,7 @@ import { RouterModule, Routes, Router } from '@angular/router';
 })
 export class HeroComponent implements OnInit {
 
-  
+  email = new FormControl('', [Validators.email ]);
 
 
   constructor(private router: Router) { }

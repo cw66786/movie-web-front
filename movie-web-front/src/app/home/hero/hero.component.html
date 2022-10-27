@@ -14,7 +14,7 @@
             <div class="input-wrapper">
               
                 <input
-                 
+                 [formControl]="email"
                   
                   class="email-input"
                   
@@ -25,11 +25,18 @@
                   minlength="5"
                   placeholder="Email Address"
                 />
-              
+           
                 <button mat-flat-button class="email-btn" type="submit" routerLink="/register" >Get Started ></button>
-            </div>
-          
-        
+              </div>
+              <div class="error-holder">
+              <mat-error 
+              *ngIf="email.hasError('email') && !email.hasError('required')"
+            >
+              Please enter a valid email address
+            </mat-error>
+          </div>
+              
+              
      
   </form>
 </div>
