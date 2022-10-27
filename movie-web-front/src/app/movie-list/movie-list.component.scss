@@ -1,0 +1,8 @@
+.wrapper{
+    width: 100vw;
+    min-height: 100vh;
+    display: gird;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: repeat(10,8vw);
+}
+
