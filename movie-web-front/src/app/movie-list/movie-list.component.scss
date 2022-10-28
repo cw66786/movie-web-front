@@ -1,8 +1,32 @@
-.wrapper{
-    width: 100vw;
-    min-height: 100vh;
-    display: gird;
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: repeat(10,8vw);
+.wrapper {
+  margin-top: 100px;
+  width: 100vw;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 }
 
+.center-container{
+    width: fit-content;
+    display: grid;
+  justify-content: space-evenly;
+  justify-items: center;
+  align-content: space-evenly;
+  align-items: center;
+  grid-template-rows: repeat(4, 40vh);
+  grid-template-columns: repeat(5,300px);
+  grid-row-gap: 20px;
+  grid-column-gap: 20px;
+  padding: 100px;
+  padding-bottom: 20px;
+  
+}
+
+.card {
+  height: 40vh;
+  width: 300px;
+  margin: 0;
+  padding: 0;
+}

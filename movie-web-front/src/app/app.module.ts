@@ -6,6 +6,8 @@ import {MatInputModule} from '@angular/material/input';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon'; 
 import {MatStepperModule} from '@angular/material/stepper';
+import { HttpClientModule } from '@angular/common/http';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +22,7 @@ import { StepperFormComponent } from './register/stepper-form/stepper-form.compo
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { MovieCardComponent } from './movie-list/movie-card/movie-card.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +34,9 @@ import { MovieCardComponent } from './movie-list/movie-card/movie-card.component
     RegisterComponent,
     StepperFormComponent,
     MovieListComponent,
-    MovieCardComponent
+    MovieCardComponent,
+   
+  
     
   ],
   imports: [
@@ -44,7 +49,8 @@ import { MovieCardComponent } from './movie-list/movie-card/movie-card.component
     FormsModule,
     ReactiveFormsModule,
     MatIconModule,
-    MatStepperModule
+    MatStepperModule,
+    HttpClientModule
     
   ],
   providers: [],

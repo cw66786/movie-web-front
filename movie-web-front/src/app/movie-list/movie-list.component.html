@@ -1,6 +1,9 @@
 <div class="wrapper">
-    <mat-card class="card">
-        <img src="" alt="">
+    <div class="center-container">
+    <mat-card class="card" *ngFor="let movie of movies" id="{{movie.id}}">
+        <img src="{{movie.pic}}" alt="{{movie.title}}">
+        <mat-card-title>{{movie.title}}</mat-card-title>
 
     </mat-card>
+</div>
 </div>
