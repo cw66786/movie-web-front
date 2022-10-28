@@ -9,31 +9,23 @@ import { MovieService } from './services/movie.service';
 @Component({
   selector: 'app-movie-list',
   templateUrl: './movie-list.component.html',
-  styleUrls: ['./movie-list.component.scss']
+  styleUrls: ['./movie-list.component.scss'],
 })
 export class MovieListComponent implements OnInit {
-  private imgUrl: string = 'https://image.tmdb.org/t/p/original/';
+  private imgUrl: string = 'https://image.tmdb.org/t/p/original';
   public movies = [];
 
-  constructor(private movieService: MovieService) { }
+  constructor(private movieService: MovieService) {}
 
   ngOnInit(): void {
-    this.movieService.getPopMovies(1).subscribe(res => 
+    this.movieService.getPopMovies(1).subscribe((res) =>
       res.results.forEach((movie: Movie) => {
-        this.movies.push(
-        map((movie: Movie) => {
-            const movieItem = {
-                  title: movie.title,
-                  pic: +this.imgUrl + +movie.poster_path,
-                  id: movie.id
-
-            }
-           
-           
-        })
-        )
+        this.movies.push({
+          title: movie.title,
+          pic: this.imgUrl + movie.poster_path,
+          id: movie.id,
+        });
       })
-      )
+    );
   }
-
 }
