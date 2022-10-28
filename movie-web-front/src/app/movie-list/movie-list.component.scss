@@ -7,7 +7,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: black;
+  background-color: #181818;
   padding: 0;
   margin: 0;
 }
@@ -26,7 +26,7 @@
   margin: 150px 10% 20px 10%;
   
 
-  background-color: transparent;
+ 
   height: 100%;
  
 }
@@ -41,7 +41,8 @@
   text-align: center;
   margin: 0;
   padding: 2px 3px;
-  background-color: #e50914;
+  background-color:#e50914;
+  border: solid black 2px;
 }
 
 img {
