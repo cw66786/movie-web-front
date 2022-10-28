@@ -7,6 +7,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon'; 
 import {MatStepperModule} from '@angular/material/stepper';
 import { HttpClientModule } from '@angular/common/http';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -50,7 +51,8 @@ import { MovieCardComponent } from './movie-list/movie-card/movie-card.component
     ReactiveFormsModule,
     MatIconModule,
     MatStepperModule,
-    HttpClientModule
+    HttpClientModule,
+    InfiniteScrollModule
     
   ],
   providers: [],

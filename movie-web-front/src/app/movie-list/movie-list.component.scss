@@ -8,10 +8,12 @@
   justify-content: center;
   align-items: center;
   background-color: black;
+  padding: 0;
+  margin: 0;
 }
 
 .center-container {
-  width: fit-content;
+  width: 80vw;
   display: grid;
   justify-content: space-evenly;
   justify-items: center;
@@ -21,12 +23,12 @@
   grid-template-columns: repeat(5, auto);
   grid-row-gap: 20px;
   grid-column-gap: 20px;
-  padding: 150px 100px 0px 100px;
+  margin: 150px 10% 20px 10%;
   
 
   background-color: transparent;
   height: 100%;
-  margin-bottom: 20px;
+ 
 }
 
 .card {
@@ -50,9 +52,30 @@ img {
   border: solid black 1px;
 }
 
-.title {
-  margin-bottom: 50px;
+.scrollUp{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: fixed;
+    top: 96%;
+    left: 50%;
+    transform: translate(-96%,-50%);
+    height: 3rem;
+    width: 3rem;
+    font-size: 2.5rem;
+    background-color: rgb(229, 9, 20, .5);
+   
+    color: white;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border: 2px solid white;
+    padding: 0;
+    margin: 0;
+    z-index: 99;
 }
+
+
 
 @media (max-width: 1680px) {
     .center-container{
@@ -86,6 +109,12 @@ img {
     img{
         height: 99%;
         width: 99%;
+    }
+
+    .scrollUp{
+        height: 2rem;
+        width: 2rem;
+        font-size: 1.5rem;
     }
     
 }
