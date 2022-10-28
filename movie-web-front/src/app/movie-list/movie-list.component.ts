@@ -18,14 +18,21 @@ export class MovieListComponent implements OnInit {
   constructor(private movieService: MovieService) {}
 
   ngOnInit(): void {
-    this.movieService.getPopMovies(1).subscribe((res) =>
-      res.results.forEach((movie: Movie) => {
-        this.movies.push({
-          title: movie.title,
-          pic: this.imgUrl + movie.poster_path,
-          id: movie.id,
-        });
-      })
-    );
-  }
+     this.movieService.getPopMovies(1);
+     this.movieService.popMovies$.subscribe(res =>
+      this.movies = res
+     )
+     
+     //.subscribe((res) =>
+    //   res.results.forEach((movie: Movie) => {
+    //     this.movies.push({
+    //       title: movie.title,
+    //       pic: this.imgUrl + movie.poster_path,
+    //       id: movie.id,
+    //     });
+    //   })
+    // );
+  };
+
+  
 }
