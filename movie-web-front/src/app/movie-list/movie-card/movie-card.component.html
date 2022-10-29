@@ -1,1 +1,13 @@
-<p>movie-card works!</p>
+<div class="wrapper">
+    <div class="hero">
+        <div class="logo"></div>
+        <mat-card-title>{{this.movie.title}}</mat-card-title>
+        <div class="info">
+            <div class="stats">{{this.movie.release_date | date: 'yyyy'}} | {{this.movie.runtime}} mins | rating: {{this.movie.vote_average}}</div> 
+            <div class="genres"><p *ngFor="let genre of this.movie.genres">{{genre.name}}</p></div>  
+            <div class="description">
+                <p>{{this.movie.overview}}</p>
+            </div>  
+        </div>
+    </div>
+</div>

@@ -16,6 +16,7 @@ export class MovieListComponent implements OnInit {
   public movies = [];
   public page: number = 1;
   public scrolled: boolean = false;
+  
 
   constructor(private movieService: MovieService) {}
 
@@ -51,5 +52,11 @@ export class MovieListComponent implements OnInit {
       left: 0,
       behavior: 'smooth',
     });
+  };
+
+  getId(clickedId: string){
+      this.movieService.transferId(clickedId);
   }
+
+
 }

@@ -6,7 +6,13 @@
   (scrolled)="onScroll()"
 >
   <div class="center-container">
-    <mat-card class="card" *ngFor="let movie of movies" id="{{ movie.id }}">
+    <mat-card 
+        class="card" 
+        *ngFor="let movie of movies" 
+        id="{{ movie.id }}"
+        (click)="getId(movie.id)"
+        routerLink="/selectedMovie"
+        >
       <img src="{{ movie.pic }}" alt="{{ movie.title }}" />
       <!-- <mat-card-title class="title">{{movie.title}}</mat-card-title> -->
     </mat-card>

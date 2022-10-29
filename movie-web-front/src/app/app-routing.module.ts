@@ -7,7 +7,7 @@ import { RegisterComponent } from './register/register.component';
 import { SignInComponent } from './signIn/signIn.component';
 
 const routes: Routes = [
-  {path: 'moviecard', component: MovieCardComponent},
+  {path: 'selectedMovie', component: MovieCardComponent},
   {path: 'movies', component: MovieListComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'signIn', component: SignInComponent},
