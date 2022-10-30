@@ -1,9 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map } from 'rxjs';
+import { BehaviorSubject, map, tap } from 'rxjs';
+import { Images } from '../interfaces/images';
 
 import { Movie, Root } from '../interfaces/moviedata';
 import { singleMovie } from '../interfaces/single-movie';
+import { Videos } from '../interfaces/videos';
 
 @Injectable({
   providedIn: 'root',
@@ -23,6 +25,10 @@ export class MovieService {
   private singleMovie = '';
   private singleBehave$ = new BehaviorSubject(this.singleMovie);
   clickedMovie$ = this.singleBehave$.asObservable();
+
+
+  
+
 
   constructor(private http: HttpClient) {}
 
@@ -57,5 +63,16 @@ export class MovieService {
   transferId(clickedId: string) {
     this.singleMovie = clickedId;
     this.singleBehave$.next(this.singleMovie);
+  }
+
+  getLogo(id: string) {
+    return this.http.get<Images>(
+      this.baseUrl + id + '/images' + this.apiUrl + this.apiKey + '&language=en'
+    );
+  };
+
+
+  getTrailer(id: string){
+    return this.http.get<Videos>(this.baseUrl + id + '/videos' + this.apiUrl + this.apiKey + '&language=en');
   }
 }
