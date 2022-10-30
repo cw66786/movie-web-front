@@ -11,12 +11,12 @@
                 <div class="description">
                     <p>{{this.movie?.overview}}</p>
                 </div>  
-                <div class="trailer">
+            </div>
+                <div class="trailer" *ngIf="safeTrailer">
                     <iframe width="600" height="315"
                     [src]="safeTrailer">
                 </iframe> 
             </div>
-        </div>
     </div>
 </div>
 </div>

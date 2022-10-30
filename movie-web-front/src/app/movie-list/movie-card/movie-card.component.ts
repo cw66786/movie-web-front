@@ -21,7 +21,14 @@ export class MovieCardComponent implements OnInit {
   constructor(private movieService: MovieService, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
-    this.movieService.clickedMovie$.subscribe(res => this.movieId = res);
+    this.movieService.clickedMovie$.subscribe(res => {
+      if(res === ''){
+        this.movieId = localStorage.getItem("movie");
+      }else{
+        this.movieId = res;
+      }
+      
+    });
     this.movieService.getOneMovie(this.movieId).subscribe(res => this.movie = res);
     this.movieService.getLogo(this.movieId).subscribe(res => this.logo = this.imgUrl + res.logos[0].file_path);
     this.movieService.getTrailer(this.movieId).subscribe(res => res.results.every(el => {
@@ -32,6 +39,8 @@ export class MovieCardComponent implements OnInit {
       }
       return true
     }));
+
+    this.storeId(this.movieId);
    
   }
 
@@ -40,4 +49,7 @@ export class MovieCardComponent implements OnInit {
     return this.sanitizer.bypassSecurityTrustResourceUrl(url)
 }
 
+  storeId(id: string){
+    localStorage.setItem("movie", id);
+  }
 }
