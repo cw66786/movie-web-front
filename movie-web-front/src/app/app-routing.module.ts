@@ -7,16 +7,25 @@ import { RegisterComponent } from './register/register.component';
 import { SignInComponent } from './signIn/signIn.component';
 
 const routes: Routes = [
-  {path: 'selectedMovie', component: MovieCardComponent},
-  {path: 'movies', component: MovieListComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: 'signIn', component: SignInComponent},
-  {path: 'home', component: HomeComponent},
-  { path: '**', component: HomeComponent }
+  {
+    path: 'register',
+    loadChildren: () =>
+      import('./register/register-routing.module').then(
+        (mod) => mod.RegisterRoutingModule
+      ),
+  },
+  
+
+  { path: 'selectedMovie', component: MovieCardComponent },
+  { path: 'movies', component: MovieListComponent },
+
+  { path: 'signIn', component: SignInComponent },
+  { path: 'home', component: HomeComponent },
+  { path: '**', component: HomeComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

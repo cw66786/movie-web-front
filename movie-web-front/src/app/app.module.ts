@@ -18,12 +18,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { HeroComponent } from './home/hero/hero.component';
 import { SignInComponent } from './signIn/signIn.component';
-import { RegisterComponent } from './register/register.component';
-import { StepperFormComponent } from './register/stepper-form/stepper-form.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { MovieCardComponent } from './movie-list/movie-card/movie-card.component';
+import { RegisterComponent } from './register/register.component';
+import { FormOneComponent } from './register/form-one/form-one.component';
 import { FormTwoComponent } from './register/form-two/form-two.component';
 import { FormThreeComponent } from './register/form-three/form-three.component';
+import { RegisterRoutingModule } from './register/register-routing.module';
 
 
 @NgModule({
@@ -34,12 +35,13 @@ import { FormThreeComponent } from './register/form-three/form-three.component';
     HomeComponent,
     HeroComponent,
     SignInComponent,
-    RegisterComponent,
-    StepperFormComponent,
     MovieListComponent,
     MovieCardComponent,
+    RegisterComponent,
+    FormOneComponent,
     FormTwoComponent,
-    FormThreeComponent,
+    FormThreeComponent
+   
    
   
     
@@ -56,7 +58,9 @@ import { FormThreeComponent } from './register/form-three/form-three.component';
     MatIconModule,
     MatStepperModule,
     HttpClientModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    RegisterRoutingModule
+  
     
   ],
   providers: [],

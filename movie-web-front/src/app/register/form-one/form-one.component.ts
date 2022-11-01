@@ -3,11 +3,11 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { FormErrorService } from 'src/app/form-error.service';
 
 @Component({
-  selector: 'app-stepper-form',
-  templateUrl: './stepper-form.component.html',
-  styleUrls: ['./stepper-form.component.scss']
+  selector: 'app-form-one',
+  templateUrl: './form-one.component.html',
+  styleUrls: ['./form-one.component.scss']
 })
-export class StepperFormComponent implements OnInit {
+export class FormOneComponent implements OnInit {
 
   registerForm1 = new FormGroup({
     email: new FormControl('', [Validators.email, Validators.required ]),
