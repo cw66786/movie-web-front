@@ -22,6 +22,8 @@ import { RegisterComponent } from './register/register.component';
 import { StepperFormComponent } from './register/stepper-form/stepper-form.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { MovieCardComponent } from './movie-list/movie-card/movie-card.component';
+import { FormTwoComponent } from './register/form-two/form-two.component';
+import { FormThreeComponent } from './register/form-three/form-three.component';
 
 
 @NgModule({
@@ -36,6 +38,8 @@ import { MovieCardComponent } from './movie-list/movie-card/movie-card.component
     StepperFormComponent,
     MovieListComponent,
     MovieCardComponent,
+    FormTwoComponent,
+    FormThreeComponent,
    
   
     

@@ -1,65 +1,50 @@
 <div class="wrapper">
-    <form class="register-form" *ngIf="count === 0">
-        
-       <h1>Just one more step and you can be binging<br>your favorite <b>Shows</b> and <b>Movies</b>!</h1>
-        <mat-form-field appearance="fill">
-          <mat-label>Email</mat-label>
-          <input
-            type="email"
-            matInput
-            [formControl]="email"
-            
-            placeholder="Ex. craig@example.com"
-          />
+  <form class="register-form" [formGroup]="registerForm1">
+    <h1
+      [ngStyle]="{
+        'text-decoration': 'underline',
+        'text-decoration-thickness': '5px',
+        'text-underline-offset': '8px'
+      }"
+    >
+      <b>Step 1 of 3</b>
+    </h1>
+    <h1>
+      Just three steps and you can be binging<br />your favorite
+      <b>Shows</b> and <b>Movies</b>!
+    </h1>
+    <!-- Email -->
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input
+        type="email"
+        matInput
+        formControlName="email"
+        placeholder="Ex. craig@example.com"
+        [errorStateMatcher]="errorMatcher"
+      />
 
-          <mat-error 
-            *ngIf="email.hasError('email') && !email.hasError('required')"
-          >
-            Please enter a valid email address
-          </mat-error>
-        
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-          <mat-label>Password</mat-label>
-          <input
-            matInput
-            placeholder="Enter You're Password"
-            [type]="hide ? 'password' : 'text'"
-            [formControl]="password"
-            required
-          />
-          <mat-icon matSuffix (click)="hide = !hide">{{
-            hide ? "visibility" : "visibility_off"
-          }}</mat-icon>
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-            <mat-label>User Name</mat-label>
-            <input
-              type="username"
-              matInput
-              
-              
-              placeholder="Ex. username1234"
-            />
-  
-            
-          
-          
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>TMBD Key</mat-label>
-            <input
-              type="text"
-              matInput
-              
-              
-              placeholder="TMBD Key"
-            />
-  
-           
-          
-          </mat-form-field>
-        <button mat-flat-button color="primary">Register</button>
-        
-      </form>
+      <mat-error *ngIf="registerForm1.get('email').hasError('email') && !registerForm1.get('email').hasError('required')">
+        Please enter a valid email address
+      </mat-error>
+    </mat-form-field>
+      <!-- Confirm Email -->
+      <mat-form-field appearance="fill">
+        <mat-label>Confirm Email</mat-label>
+        <input
+          type="email"
+          matInput
+          formControlName="confirmEmail"
+          placeholder="Ex. craig@example.com"
+          [errorStateMatcher]="errorMatcher"
+        />
+
+        <mat-error
+          *ngIf="registerForm1.get('email').value !== registerForm1.get('confirmEmail').value"
+        >
+          Email does not match!
+        </mat-error>
+      </mat-form-field>
+    <button mat-flat-button type="button" color="primary">Next</button>
+  </form>
 </div>
