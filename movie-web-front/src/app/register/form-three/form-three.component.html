@@ -1,18 +1,35 @@
-<!-- <mat-form-field appearance="fill">
-  <h1 [ngStyle]="{'text-decoration': 'underline','text-decoration-thickness': '5px','text-underline-offset': '8px'}"><b>Step 1 of 3</b></h1>
-       <h1>Just three steps and you can be binging<br>your favorite <b>Shows</b> and <b>Movies</b>!</h1>
-    <mat-label>TMBD Key</mat-label>
-    <input
-      type="text"
-      matInput
+<div class="wrapper">
+  <form class="register-form" [formGroup]="registerForm3">
+    <h1 [ngStyle]="{'text-decoration': 'underline','text-decoration-thickness': '5px','text-underline-offset': '8px'}"><b>Step 3 of 3</b></h1>
+    <h1>Just one more  step, hope the popcorn is ready!!!</h1>
+    <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input
+          type="text"
+          matInput
+          
+          
+          placeholder="Username"
+        />
+    
+       
       
+      </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>TMBD Key</mat-label>
+        <input
+          type="text"
+          matInput
+          
+          
+          placeholder="TMBD Key"
+        />
+    
+       
       
-      placeholder="TMBD Key"
-    />
-
-   
-  
-  </mat-form-field>
-<button mat-flat-button color="primary">Register</button> -->
-
+      </mat-form-field>
+    <button mat-flat-button color="primary">Register</button>
+    
+  </form>
+</div>
 

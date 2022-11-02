@@ -12,6 +12,7 @@ const routes: Routes = [
   {path: 'form3', component: FormThreeComponent},
   {path: 'form2', component: FormTwoComponent},
   {path: 'form1', component: FormOneComponent},
+  {path: '', component: FormOneComponent},
   ]
   }
 ];
