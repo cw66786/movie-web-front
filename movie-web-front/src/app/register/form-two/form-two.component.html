@@ -21,13 +21,17 @@
         placeholder="Enter You're Password"
         [type]="hide ? 'password' : 'text'"
         formControlName="password"
-        
         required
       />
       <mat-icon matSuffix (click)="hide = !hide">{{
         hide ? "visibility" : "visibility_off"
       }}</mat-icon>
-      <mat-error *ngIf="registerForm2.get('password').hasError('required') && registerForm2.get('password').touched">
+      <mat-error
+        *ngIf="
+          registerForm2.get('password').hasError('required') &&
+          registerForm2.get('password').touched
+        "
+      >
         Please enter a password
       </mat-error>
       <mat-error
@@ -44,22 +48,28 @@
       <mat-label>Confirm Password</mat-label>
       <input
         matInput
-        placeholder="Confirm You're Password"
+        placeholder="Confirm Password"
         [type]="hide ? 'password' : 'text'"
         formControlName="confirmPassword"
-        
         required
       />
       <mat-icon matSuffix (click)="hide = !hide">{{
         hide ? "visibility" : "visibility_off"
       }}</mat-icon>
-      <mat-error
+      <div
         *ngIf="
-        this.registerForm2.hasError('notSame')
+          !form2.valid &&
+          (form2.dirty || form2.touched)
         "
       >
-      Password does not match!
-      </mat-error>
+        <mat-error
+          *ngIf="
+         form2.errors?.['notSame']
+         "
+        >
+          Password does not match!
+        </mat-error>
+      </div>
     </mat-form-field>
     <button mat-flat-button type="button" color="primary" routerLink="../form3">
       Next

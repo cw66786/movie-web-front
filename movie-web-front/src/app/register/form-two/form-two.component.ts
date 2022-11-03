@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
-import { FormErrorService } from 'src/app/form-error.service';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-form-two',
@@ -9,35 +8,34 @@ import { FormErrorService } from 'src/app/form-error.service';
 })
 export class FormTwoComponent implements OnInit {
   hide: boolean = true;
+  registerForm2: FormGroup;
+  notSame = '';
 
-  checkConfirm: ValidatorFn = (group: AbstractControl):  ValidationErrors | null => { 
-    let password = group.get('password').value;
-    let confirmPass = group.get('confirmPassword').value;
-    return password === confirmPass ? null : { notSame: true };
-  }
-
-  registerForm2 = new FormGroup({
-    password: new FormControl('', [Validators.minLength(4), Validators.required ]),
-
-    confirmPassword: new FormControl('',[]),
-  },{validators: this.checkConfirm});    
+  
 
 
   
 
-  constructor(public errorMatcher: FormErrorService) {}
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
+    this.registerForm2 = this.fb.group({
+      password: new FormControl('', [Validators.minLength(4), Validators.required ]),
   
+      confirmPassword: new FormControl('',[]),
+    },{validators: [this.checkConfirm]});    
   }
 
-  click(){
-    console.log(this.registerForm2.get('password').value , this.registerForm2.get('confirmPassword').value  )
-
+  
+  get form2(): FormGroup{
+    return this.registerForm2 as FormGroup
   }
 
-
-
+  checkConfirm: ValidatorFn = (group: FormGroup):  ValidationErrors | null => { 
+    const password = group.get('password')?.value;
+    const confirmPass = group.get('confirmPassword')?.value;
+    return password !== confirmPass ? { [this.notSame]: true } : null;
+  }
  
 
   
