@@ -20,11 +20,10 @@ import { HeroComponent } from './pages/home/hero/hero.component';
 import { SignInComponent } from './pages/signIn/signIn.component';
 import { MovieListComponent } from './pages/movie-list/movie-list.component';
 import { MovieCardComponent } from './pages/movie-list/movie-card/movie-card.component';
-import { RegisterComponent } from './pages/register/register.component';
 import { FormOneComponent } from './pages/register/form-one/form-one.component';
 import { FormTwoComponent } from './pages/register/form-two/form-two.component';
 import { FormThreeComponent } from './pages/register/form-three/form-three.component';
-import { RegisterRoutingModule } from './pages/register/register-routing.module';
+
 import { PagesModule } from './pages/pages.module';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
@@ -35,15 +34,8 @@ import { SharedModule } from './shared/shared.module';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    HomeComponent,
-    HeroComponent,
-    SignInComponent,
-    MovieListComponent,
-    MovieCardComponent,
-    RegisterComponent,
-    FormOneComponent,
-    FormTwoComponent,
-    FormThreeComponent
+   
+    
    
    
   
@@ -62,7 +54,7 @@ import { SharedModule } from './shared/shared.module';
     MatStepperModule,
     HttpClientModule,
     InfiniteScrollModule,
-    RegisterRoutingModule,
+
     PagesModule,
     CoreModule,
     SharedModule
