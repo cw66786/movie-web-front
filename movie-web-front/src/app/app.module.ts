@@ -12,19 +12,22 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './shared/header/header.component';
+import { FooterComponent } from './shared/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HomeComponent } from './home/home.component';
-import { HeroComponent } from './home/hero/hero.component';
-import { SignInComponent } from './signIn/signIn.component';
-import { MovieListComponent } from './movie-list/movie-list.component';
-import { MovieCardComponent } from './movie-list/movie-card/movie-card.component';
-import { RegisterComponent } from './register/register.component';
-import { FormOneComponent } from './register/form-one/form-one.component';
-import { FormTwoComponent } from './register/form-two/form-two.component';
-import { FormThreeComponent } from './register/form-three/form-three.component';
-import { RegisterRoutingModule } from './register/register-routing.module';
+import { HomeComponent } from './pages/home/home.component';
+import { HeroComponent } from './pages/home/hero/hero.component';
+import { SignInComponent } from './pages/signIn/signIn.component';
+import { MovieListComponent } from './pages/movie-list/movie-list.component';
+import { MovieCardComponent } from './pages/movie-list/movie-card/movie-card.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { FormOneComponent } from './pages/register/form-one/form-one.component';
+import { FormTwoComponent } from './pages/register/form-two/form-two.component';
+import { FormThreeComponent } from './pages/register/form-three/form-three.component';
+import { RegisterRoutingModule } from './pages/register/register-routing.module';
+import { PagesModule } from './pages/pages.module';
+import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -59,7 +62,10 @@ import { RegisterRoutingModule } from './register/register-routing.module';
     MatStepperModule,
     HttpClientModule,
     InfiniteScrollModule,
-    RegisterRoutingModule
+    RegisterRoutingModule,
+    PagesModule,
+    CoreModule,
+    SharedModule
   
     
   ],

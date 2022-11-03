@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { FormErrorService } from 'src/app/form-error.service';
+import { FormErrorService } from 'src/app/core/form-error.service';
 
 @Component({
   selector: 'app-form-one',

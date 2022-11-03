@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Movie } from '../interfaces/moviedata';
 import { singleMovie } from '../interfaces/single-movie';
-import { MovieService } from '../services/movie.service';
+import { MovieService } from 'src/app/core/movie-list services/movie.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({

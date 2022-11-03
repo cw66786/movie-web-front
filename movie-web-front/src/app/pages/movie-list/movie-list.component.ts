@@ -4,7 +4,7 @@ import { RouterOutlet } from '@angular/router';
 import { map, tap } from 'rxjs/operators';
 import { Movie, Root } from './interfaces/moviedata';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { MovieService } from './services/movie.service';
+import { MovieService } from 'src/app/core/movie-list services/movie.service';
 
 @Component({
   selector: 'app-movie-list',

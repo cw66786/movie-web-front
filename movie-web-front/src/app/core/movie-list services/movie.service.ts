@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, tap } from 'rxjs';
-import { Images } from '../interfaces/images';
+import { Images } from 'src/app/pages/movie-list/interfaces/images';
 
-import { Movie, Root } from '../interfaces/moviedata';
-import { singleMovie } from '../interfaces/single-movie';
-import { Videos } from '../interfaces/videos';
+import { Movie, Root } from '../../pages/movie-list/interfaces/moviedata';
+import { singleMovie } from '../../pages/movie-list/interfaces/single-movie';
+import { Videos } from '../../pages/movie-list/interfaces/videos';
 
 @Injectable({
   providedIn: 'root',

@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { MovieCardComponent } from './movie-list/movie-card/movie-card.component';
-import { MovieListComponent } from './movie-list/movie-list.component';
-import { RegisterComponent } from './register/register.component';
-import { SignInComponent } from './signIn/signIn.component';
+import { HomeComponent } from './pages/home/home.component';
+import { MovieCardComponent } from './pages/movie-list/movie-card/movie-card.component';
+import { MovieListComponent } from './pages/movie-list/movie-list.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { SignInComponent } from './pages/signIn/signIn.component';
 
 const routes: Routes = [
   {
     path: 'register',
     loadChildren: () =>
-      import('./register/register-routing.module').then(
+      import('./pages/register/register-routing.module').then(
         (mod) => mod.RegisterRoutingModule
       ),
   },
