@@ -8,20 +8,17 @@ import { SignInComponent } from './pages/signIn/signIn.component';
 
 const routes: Routes = [
   {
-    path: 'register',
+    path: 'pages',
     loadChildren: () =>
-      import('./pages/register/register-routing.module').then(
-        (mod) => mod.RegisterRoutingModule
+      import('./pages/pages.module').then(
+        (mod) => mod.PagesModule
       ),
   },
   
 
-  { path: 'selectedMovie', component: MovieCardComponent },
-  { path: 'movies', component: MovieListComponent },
-
-  { path: 'signIn', component: SignInComponent },
-  { path: 'home', component: HomeComponent },
-  { path: '**', component: HomeComponent },
+  
+ 
+  // { path: '**', component: HomeComponent },
 ];
 
 @NgModule({
