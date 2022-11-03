@@ -17,6 +17,6 @@ export class HeroComponent implements OnInit {
   }
 
   onSubmit() {
-    this.router.navigateByUrl('/signUp');
+    this.router.navigateByUrl('/register');
 }
 }
