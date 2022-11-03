@@ -11,7 +11,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from '../app-routing.module';
 
-import { MovieCardComponent } from './movie-list/movie-card/movie-card.component';
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { FormOneComponent } from './register/form-one/form-one.component';
 import { FormThreeComponent } from './register/form-three/form-three.component';
@@ -25,26 +25,17 @@ import { HeroComponent } from './home/hero/hero.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
 
-  { path: 'selectedMovie', component: MovieCardComponent },
-  { path: 'movies', component: MovieListComponent },
-  { path: 'signIn', component: SignInComponent },
-  {
-    path: 'register',
-    component: RegisterComponent,
-    children: [
-      { path: 'form3', component: FormThreeComponent },
-      { path: 'form2', component: FormTwoComponent },
-      { path: 'form1', component: FormOneComponent },
-      { path: '', component: FormOneComponent },
-    ],
-  },
+ 
+ 
+ 
+  
 ];
 
 @NgModule({
   declarations: [
     SignInComponent,
     MovieListComponent,
-    MovieCardComponent,
+    MovieDetailsComponent,
     RegisterComponent,
     FormOneComponent,
     FormTwoComponent,
@@ -67,8 +58,8 @@ const routes: Routes = [
     HttpClientModule,
     InfiniteScrollModule,
 
-    RouterModule.forChild(routes),
+    
   ],
-  exports: [RouterModule],
+ 
 })
 export class PagesModule {}

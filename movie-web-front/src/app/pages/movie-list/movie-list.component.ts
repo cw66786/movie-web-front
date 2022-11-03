@@ -21,6 +21,7 @@ export class MovieListComponent implements OnInit {
   constructor(private movieService: MovieService) {}
 
   ngOnInit(): void {
+   
     this.movieService.getPopMovies(this.page);
     this.movieService.popMovies$.subscribe((res) => (this.movies = res));
 

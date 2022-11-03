@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Movie } from '../interfaces/moviedata';
-import { singleMovie } from '../interfaces/single-movie';
+import { Movie } from '../movie-list/interfaces/moviedata';
+import { singleMovie } from '../movie-list/interfaces/single-movie';
 import { MovieService } from 'src/app/core/movie-list services/movie.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-movie-card',
-  templateUrl: './movie-card.component.html',
-  styleUrls: ['./movie-card.component.scss']
+  templateUrl: './movie-details.component.html',
+  styleUrls: ['./movie-details.component.scss']
 })
-export class MovieCardComponent implements OnInit {
+export class MovieDetailsComponent implements OnInit {
    imgUrl: string = 'https://image.tmdb.org/t/p/original';
    trailerUrl: string = 'https://www.youtube.com/embed/';
   private movieId: string = '';
