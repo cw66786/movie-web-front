@@ -21,7 +21,8 @@
         matInput
         formControlName="email"
         placeholder="Ex. craig@example.com"
-        [errorStateMatcher]="errorMatcher"
+        [errorStateMatcher]="this.errorMatcher"
+       required
       />
 
       <mat-error
@@ -41,22 +42,25 @@
         matInput
         formControlName="confirmEmail"
         placeholder="Ex. craig@example.com"
-        [errorStateMatcher]="this.errorMatcher"
+       required
       />
-
+    </mat-form-field>
+    <div
+      class="confirm-error"
+      *ngIf="
+       
+        registerForm1.dirty || registerForm1.touched
+      "
+    >
       <mat-error
         *ngIf="
-          registerForm1.get('email').value !==
-          registerForm1.get('confirmEmail').value
-        "
+                 registerForm1.errors?.[this.notSame]
+                "
       >
         Email does not match!
       </mat-error>
-    </mat-form-field>
-    <button mat-flat-button 
-          type="button" 
-          color="primary" 
-          routerLink="form2">
+    </div>
+    <button mat-flat-button type="button" color="primary" routerLink="form2">
       Next
     </button>
   </form>

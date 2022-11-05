@@ -18,7 +18,17 @@ h1{
     margin-top: 10px;
 }
 
-
+.confirm-error {
+  display: block;
+  margin-top: -1.34375em;
+  font-weight: 400;
+  line-height: 1.125;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  letter-spacing: normal;
+  text-align: left;
+  font-size: 75%;
+  padding-left: 10px;
+}
 
 button {
     height: 50px;

@@ -27,9 +27,7 @@ export class FormTwoComponent implements OnInit {
   }
 
   
-  get form2(): FormGroup{
-    return this.registerForm2 as FormGroup
-  }
+  
 
   checkConfirm: ValidatorFn = (group: FormGroup):  ValidationErrors | null => { 
     const password = group.get('password')?.value;
