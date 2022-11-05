@@ -9,7 +9,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors,
 export class FormTwoComponent implements OnInit {
   hide: boolean = true;
   registerForm2: FormGroup;
-  notSame = '';
+  notSame = 'false';
 
   
 
@@ -23,7 +23,7 @@ export class FormTwoComponent implements OnInit {
       password: new FormControl('', [Validators.minLength(4), Validators.required ]),
   
       confirmPassword: new FormControl('',[]),
-    },{validators: [this.checkConfirm]});    
+    },{validators: this.checkConfirm});    
   }
 
   

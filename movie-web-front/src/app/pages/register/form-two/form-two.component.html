@@ -56,22 +56,22 @@
       <mat-icon matSuffix (click)="hide = !hide">{{
         hide ? "visibility" : "visibility_off"
       }}</mat-icon>
-      <div
-        *ngIf="
-          !form2.valid &&
-          (form2.dirty || form2.touched)
-        "
-      >
-        <mat-error
-          *ngIf="
-         form2.errors?.['notSame']
-         "
-        >
-          Password does not match!
-        </mat-error>
-      </div>
+     <div *ngIf="!registerForm2.valid &&
+              (registerForm2.dirty || registerForm2.touched)
+              ">
+            
+              <mat-error
+                *ngIf="
+               registerForm2.errors?.[this.notSame]
+               "
+              >
+                Password does not match!
+              </mat-error>
+            </div>
     </mat-form-field>
-    <button mat-flat-button type="button" color="primary" routerLink="../form3">
+   
+  
+    <button mat-flat-button color="primary" routerLink="../form3">
       Next
     </button>
   </form>
