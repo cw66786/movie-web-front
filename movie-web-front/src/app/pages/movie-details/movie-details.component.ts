@@ -11,7 +11,8 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 })
 export class MovieDetailsComponent implements OnInit {
    imgUrl: string = 'https://image.tmdb.org/t/p/original';
-   trailerUrl: string = 'https://www.youtube.com/embed/';
+   trailerUrl: string = '';
+  //  'https://www.youtube.com/embed/';
   private movieId: string = '';
   movie!: singleMovie;
   logo: string = '';
@@ -34,7 +35,7 @@ export class MovieDetailsComponent implements OnInit {
     this.movieService.getTrailer(this.movieId).subscribe(res => res.results.every(el => {
       if(el.type === 'Trailer'){
         
-        this.safeTrailer = this.getSafeUrl(this.trailerUrl + el.key);
+        this.trailerUrl = el.key;
         return false
       }
       return true

@@ -1,3 +1,4 @@
+
 <div class="wrapper" [style.background-image]="'url(' + this.imgUrl + this.movie?.backdrop_path+ ')'">
     
     <div class="dark-layer">
@@ -12,10 +13,10 @@
                     <p>{{this.movie?.overview}}</p>
                 </div>  
             </div>
-                <div class="trailer" *ngIf="safeTrailer">
-                    <iframe width="600" height="315"
-                    [src]="safeTrailer">
-                </iframe> 
+                <div class="trailer" >
+                    <youtube-player [width]="600" [height]="315"
+                    videoId="{{this.trailerUrl}}">
+                </youtube-player> 
             </div>
     </div>
 </div>

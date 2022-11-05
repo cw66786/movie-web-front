@@ -10,7 +10,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from '../app-routing.module';
+import {YouTubePlayerModule} from '@angular/youtube-player';
 
+//components 
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { FormOneComponent } from './register/form-one/form-one.component';
@@ -57,6 +59,7 @@ const routes: Routes = [
     MatStepperModule,
     HttpClientModule,
     InfiniteScrollModule,
+    YouTubePlayerModule
 
     
   ],

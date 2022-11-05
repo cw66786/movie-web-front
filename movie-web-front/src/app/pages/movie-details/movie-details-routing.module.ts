@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MovieDetailsComponent } from './movie-details.component';
 
+
 const movieDetailsRoutes: Routes = [
   { path: '', component: MovieDetailsComponent },
 ];
