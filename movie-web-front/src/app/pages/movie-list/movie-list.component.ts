@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 
 import { map, tap } from 'rxjs/operators';
 import { Movie, Root } from './interfaces/moviedata';
@@ -18,7 +18,7 @@ export class MovieListComponent implements OnInit {
   public scrolled: boolean = false;
   
 
-  constructor(private movieService: MovieService) {}
+  constructor(private movieService: MovieService, private router: Router) {}
 
   ngOnInit(): void {
    
@@ -56,7 +56,10 @@ export class MovieListComponent implements OnInit {
   };
 
   getId(clickedId: string){
+   
       this.movieService.transferId(clickedId);
+      
+      
   }
 
 

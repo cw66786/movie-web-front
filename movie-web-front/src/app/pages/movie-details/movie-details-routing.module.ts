@@ -4,7 +4,7 @@ import { MovieDetailsComponent } from './movie-details.component';
 
 
 const movieDetailsRoutes: Routes = [
-  { path: '', component: MovieDetailsComponent },
+  { path: '', runGuardsAndResolvers: 'always', component: MovieDetailsComponent },
 ];
 
 @NgModule({

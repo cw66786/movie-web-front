@@ -3,6 +3,8 @@ import { Movie } from '../movie-list/interfaces/moviedata';
 import { singleMovie } from '../movie-list/interfaces/single-movie';
 import { MovieService } from 'src/app/core/movie-list services/movie.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { MovieDetailsResolver } from 'src/app/core/movie-list services/movie-details.resolver';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-movie-card',
@@ -17,40 +19,44 @@ export class MovieDetailsComponent implements OnInit {
   movie!: singleMovie;
   logo: string = '';
   
-  safeTrailer: SafeResourceUrl;
+  
 
-  constructor(private movieService: MovieService, private sanitizer: DomSanitizer) { }
+  constructor(private movieService: MovieService, private activatedRoute: ActivatedRoute ) { }
 
   ngOnInit(): void {
-    this.movieService.clickedMovie$.subscribe(res => {
-      if(res === ''){
-        this.movieId = localStorage.getItem("movie");
-      }else{
-        this.movieId = res;
-      }
-      
-    });
-    this.movieService.getOneMovie(this.movieId).subscribe(res => this.movie = res);
-    this.movieService.getLogo(this.movieId).subscribe(res => this.logo = this.imgUrl + res.logos[0].file_path);
-    this.movieService.getTrailer(this.movieId).subscribe(res => res.results.every(el => {
-      if(el.type === 'Trailer'){
-        
-        this.trailerUrl = el.key;
-        return false
-      }
-      return true
-    }));
+      this.activatedRoute.data.subscribe(res => {
+        this.movie = res['movie'].movie;
+        this.logo = this.imgUrl + res['movie'].logo.logos[0].file_path;
+        this.trailerUrl = res['movie'].trailer;
+        console.log(res['movie'])
 
-    this.storeId(this.movieId);
+      });
+
+
+    // this.movieService.clickedMovie$.subscribe(res => {
+    //   if(res === ''){
+    //     this.movieId = localStorage.getItem("movie");
+    //   }else{
+    //     this.movieId = res;
+    //   }
+      
+    // });
+    // this.movieService.getOneMovie(this.movieId).subscribe(res => this.movie = res);
+    // this.movieService.getLogo(this.movieId).subscribe(res => this.logo = this.imgUrl + res.logos[0].file_path);
+    // this.movieService.getTrailer(this.movieId).subscribe(res => res.results.every(el => {
+    //   if(el.type === 'Trailer'){
+        
+    //     this.trailerUrl = el.key;
+    //     return false
+    //   }
+    //   return true
+    // }));
+
+    // this.storeId(this.movieId);
    
   }
 
-  getSafeUrl(url: string) {
-    console.log(url)
-    return this.sanitizer.bypassSecurityTrustResourceUrl(url)
-}
+  
 
-  storeId(id: string){
-    localStorage.setItem("movie", id);
-  }
+  
 }

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { MovieDetailsResolver } from './core/movie-list services/movie-details.resolver';
 import { HomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [
@@ -7,10 +8,12 @@ const routes: Routes = [
 
   {
     path: 'selectedMovie',
+    
     loadChildren: () =>
       import('./pages/movie-details/movie-details-routing.module').then(
         (mod) => mod.MovieDetailsRoutingModule
       ),
+      resolve: {'movie': MovieDetailsResolver}
   },
   {
     path: 'movies',
