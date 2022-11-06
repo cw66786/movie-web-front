@@ -13,11 +13,12 @@ const routes: Routes = [
       import('./pages/movie-details/movie-details-routing.module').then(
         (mod) => mod.MovieDetailsRoutingModule
       ),
-      runGuardsAndResolvers: 'always',
-      resolve: {'movie': MovieDetailsResolver}
+     
   },
   {
     path: 'movies',
+    
+
     loadChildren: () =>
       import('./pages/movie-list/movie-list-routing.module').then(
         (mod) => mod.MovieListRoutingModule
@@ -43,7 +44,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{scrollOffset: [0,0],scrollPositionRestoration: 'enabled',onSameUrlNavigation: 'reload'})],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

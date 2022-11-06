@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 
 import { map, tap } from 'rxjs/operators';
@@ -11,7 +11,7 @@ import { MovieService } from 'src/app/core/movie-list services/movie.service';
   templateUrl: './movie-list.component.html',
   styleUrls: ['./movie-list.component.scss'],
 })
-export class MovieListComponent implements OnInit {
+export class MovieListComponent implements OnInit , OnDestroy {
   private imgUrl: string = 'https://image.tmdb.org/t/p/original';
   public movies = [];
   public page: number = 1;
@@ -21,6 +21,7 @@ export class MovieListComponent implements OnInit {
   constructor(private movieService: MovieService, private router: Router) {}
 
   ngOnInit(): void {
+ 
    
     this.movieService.getPopMovies(this.page);
     this.movieService.popMovies$.subscribe((res) => (this.movies = res));
@@ -34,6 +35,11 @@ export class MovieListComponent implements OnInit {
     //     });
     //   })
     // );
+   
+  }
+
+  ngOnDestroy(): void {
+    localStorage.setItem('page',this.page.toString());
   }
 
   onScroll() {
