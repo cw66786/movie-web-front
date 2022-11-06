@@ -13,6 +13,7 @@ const routes: Routes = [
       import('./pages/movie-details/movie-details-routing.module').then(
         (mod) => mod.MovieDetailsRoutingModule
       ),
+      runGuardsAndResolvers: 'always',
       resolve: {'movie': MovieDetailsResolver}
   },
   {

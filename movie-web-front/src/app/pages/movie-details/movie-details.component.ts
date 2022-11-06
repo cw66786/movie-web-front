@@ -4,7 +4,7 @@ import { singleMovie } from '../movie-list/interfaces/single-movie';
 import { MovieService } from 'src/app/core/movie-list services/movie.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { MovieDetailsResolver } from 'src/app/core/movie-list services/movie-details.resolver';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-movie-card',
@@ -21,9 +21,13 @@ export class MovieDetailsComponent implements OnInit {
   
   
 
-  constructor(private movieService: MovieService, private activatedRoute: ActivatedRoute ) { }
+  constructor(private movieService: MovieService, private activatedRoute: ActivatedRoute, private _router: Router) {
+    this._router.navigateByUrl('/selectedMovie');
+   }
 
   ngOnInit(): void {
+    
+
       this.activatedRoute.data.subscribe(res => {
         this.movie = res['movie'].movie;
         this.logo = this.imgUrl + res['movie'].logo.logos[0].file_path;
