@@ -35,12 +35,11 @@ export class MovieDetailsComponent implements OnInit {
 
     const res = this.activatedRoute.snapshot.data['movie'];
 
-    console.log('from resolver: ', res);
-    console.log('url: ~~', this.imgUrl + res['movie'].logo.logos[0].file_path);
-    // this.movie = res['movie'].movie;
-    // this.logo = this.imgUrl + res['movie'].logo.logos[0].file_path;
-    // this.trailerUrl = res['movie'].trailer;
-    // console.log(res['movie']);
+   
+    this.movie = res.movie;
+    this.logo = this.imgUrl + res.logo.logos[0].file_path;
+    this.trailerUrl = res.trailer;
+    console.log(res['movie']);
 
 
 

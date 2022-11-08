@@ -46,7 +46,7 @@ export class MovieDetailsResolver implements Resolve<any> {
       // })
     );
 
-    return forkJoin([selectedMovie$, logo$, this.trailerUrl]).pipe(
+    return forkJoin([selectedMovie$, logo$]).pipe(
       map((res) => {
         return {
           movie: res[0],

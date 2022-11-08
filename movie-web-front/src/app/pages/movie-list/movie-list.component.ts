@@ -56,7 +56,7 @@ export class MovieListComponent implements OnInit, OnDestroy {
   getId(clickedId: string) {
     // this.movieService.transferId(clickedId);
     const url = `/movie/${clickedId}`;
-    this.router.navigate(['/movies/123']);
-    console.log('click getId');
+    this.router.navigate([url]);
+   
   }
 }
