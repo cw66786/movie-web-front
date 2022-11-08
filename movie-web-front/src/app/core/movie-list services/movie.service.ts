@@ -25,7 +25,10 @@ export class MovieService {
   private singleMovie = '';
   private singleBehave$ = new BehaviorSubject(this.singleMovie);
   clickedMovie$ = this.singleBehave$.asObservable();
-
+  
+  private lastPage: number = 0;
+  private pageBehave$ = new BehaviorSubject(this.lastPage);
+  page$ = this.pageBehave$.asObservable();
 
   
 
@@ -63,6 +66,7 @@ export class MovieService {
   transferId(clickedId: string) {
     this.singleMovie = clickedId;
     this.singleBehave$.next(this.singleMovie);
+    localStorage.setItem('movieId',this.singleMovie);
   }
 
   getLogo(id: string) {
@@ -75,4 +79,12 @@ export class MovieService {
   getTrailer(id: string){
     return this.http.get<Videos>(this.baseUrl + id + '/videos' + this.apiUrl + this.apiKey + '&language=en');
   }
+
+
+  keepPage(page: number){
+    this.lastPage = page;
+    this.pageBehave$.next(this.lastPage);
+
+  }
+
 }

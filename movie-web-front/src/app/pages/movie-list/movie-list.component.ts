@@ -18,28 +18,22 @@ export class MovieListComponent implements OnInit , OnDestroy {
   public scrolled: boolean = false;
   
 
-  constructor(private movieService: MovieService, private router: Router) {}
+  constructor(private movieService: MovieService, private router: Router) {
 
+  }
+  
   ngOnInit(): void {
- 
-   
+    
+    this.movieService.page$.subscribe(lastPage => lastPage >= 1 ? this.page = (lastPage + 1): null);
     this.movieService.getPopMovies(this.page);
     this.movieService.popMovies$.subscribe((res) => (this.movies = res));
 
-    //.subscribe((res) =>
-    //   res.results.forEach((movie: Movie) => {
-    //     this.movies.push({
-    //       title: movie.title,
-    //       pic: this.imgUrl + movie.poster_path,
-    //       id: movie.id,
-    //     });
-    //   })
-    // );
    
   }
 
   ngOnDestroy(): void {
-    localStorage.setItem('page',this.page.toString());
+    
+    this.movieService.keepPage(this.page);
   }
 
   onScroll() {

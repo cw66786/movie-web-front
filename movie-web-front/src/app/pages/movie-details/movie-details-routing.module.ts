@@ -8,6 +8,7 @@ const movieDetailsRoutes: Routes = [
     path: '',
     component: MovieDetailsComponent,
     runGuardsAndResolvers: 'always',
+    
     resolve: { movie: MovieDetailsResolver},
   },
 ];
