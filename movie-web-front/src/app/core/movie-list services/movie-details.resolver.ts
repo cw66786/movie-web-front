@@ -17,35 +17,36 @@ export class MovieDetailsResolver implements Resolve<any> {
   movie!: singleMovie;
   trailerUrl: string = '';
 
-  constructor(private movieService: MovieService) {
-  }
-  
+  constructor(private movieService: MovieService) {}
+
   resolve(
-    route: ActivatedRouteSnapshot,
+    activatedRoute: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-    ): Observable<any> {
-      
-      this.movieService.clickedMovie$.subscribe((res) =>
-        res === ''
-          ? (this.movieId = localStorage.getItem('movieId'))
-          : (this.movieId = res)
-      );
+  ): Observable<any> {
+    // this.movieService.clickedMovie$.subscribe((res) =>
+    //   res === ''
+    //     ? (this.movieId = localStorage.getItem('movieId'))
+    //     : (this.movieId = res)
+    // );
 
-    let selectedMovie = this.movieService.getOneMovie(this.movieId);
+    const id = activatedRoute.params['id'];
+    let selectedMovie$ = this.movieService.getOneMovie(id);
+    let logo$ = this.movieService.getLogo(id);
 
-    let logo = this.movieService.getLogo(this.movieId);
-    
-    this.movieService.getTrailer(this.movieId).subscribe((res) =>
-      res.results.every((el) => {
-        if (el.type === 'Trailer') {
-          this.trailerUrl = el.key;
-          return false;
-        }
-        return true;
-      })
+    this.movieService.getTrailer(id).subscribe((res) => {
+      const trailer = res.results.find(ele => ele.type === 'Trailer');
+      this.trailerUrl = trailer.key;
+    }
+      // res.results.every((el) => {
+      //   if (el.type === 'Trailer') {
+      //     this.trailerUrl = el.key;
+      //     return false;
+      //   }
+      //   return true;
+      // })
     );
 
-    return forkJoin([selectedMovie, logo, this.trailerUrl]).pipe(
+    return forkJoin([selectedMovie$, logo$, this.trailerUrl]).pipe(
       map((res) => {
         return {
           movie: res[0],

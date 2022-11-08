@@ -26,12 +26,24 @@ export class MovieDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.data.subscribe((res) => {
-      this.movie = res['movie'].movie;
-      this.logo = this.imgUrl + res['movie'].logo.logos[0].file_path;
-      this.trailerUrl = res['movie'].trailer;
-      console.log(res['movie']);
-    });
+    // this.activatedRoute.data.subscribe((res) => {
+    //   this.movie = res['movie'].movie;
+    //   this.logo = this.imgUrl + res['movie'].logo.logos[0].file_path;
+    //   this.trailerUrl = res['movie'].trailer;
+    //   console.log(res['movie']);
+    // });
+
+    const res = this.activatedRoute.snapshot.data['movie'];
+
+    console.log('from resolver: ', res);
+    console.log('url: ~~', this.imgUrl + res['movie'].logo.logos[0].file_path);
+    // this.movie = res['movie'].movie;
+    // this.logo = this.imgUrl + res['movie'].logo.logos[0].file_path;
+    // this.trailerUrl = res['movie'].trailer;
+    // console.log(res['movie']);
+
+
+
 
     // this.movieService.clickedMovie$.subscribe(res => {
     //   if(res === ''){

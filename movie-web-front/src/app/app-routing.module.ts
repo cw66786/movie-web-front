@@ -4,27 +4,22 @@ import { MovieDetailsResolver } from './core/movie-list services/movie-details.r
 import { HomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [
-  
-
-  {
-    path: 'selectedMovie',
-    
-    loadChildren: () =>
-      import('./pages/movie-details/movie-details-routing.module').then(
-        (mod) => mod.MovieDetailsRoutingModule
-      ),
-      
-     
-  },
   {
     path: 'movies',
     
-
     loadChildren: () =>
-      import('./pages/movie-list/movie-list-routing.module').then(
-        (mod) => mod.MovieListRoutingModule
+    import('./pages/movie-list/movie-list-routing.module').then(
+      (mod) => mod.MovieListRoutingModule
       ),
-  },
+    },
+    {
+      path: 'movies/:id',
+      loadChildren: () =>
+        import('./pages/movie-details/movie-details-routing.module').then(
+          (mod) => mod.MovieDetailsRoutingModule
+        ),
+      resolve: { movie: MovieDetailsResolver },
+    },
   {
     path: 'register',
     loadChildren: () =>
@@ -45,7 +40,13 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes,{scrollOffset: [0,0],scrollPositionRestoration: 'enabled',onSameUrlNavigation: 'reload'})],
+  imports: [
+    RouterModule.forRoot(routes, {
+      scrollOffset: [0, 0],
+      scrollPositionRestoration: 'enabled',
+      onSameUrlNavigation: 'reload',
+    }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
