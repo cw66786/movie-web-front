@@ -33,13 +33,13 @@ export class MovieDetailsComponent implements OnInit {
     //   console.log(res['movie']);
     // });
 
-    const res = this.activatedRoute.snapshot.data['movie'];
+    const {movie,logo,trailer}= this.activatedRoute.snapshot.data['movie'];
 
    
-    this.movie = res.movie;
-    this.logo = this.imgUrl + res.logo.logos[0].file_path;
-    this.trailerUrl = res.trailer;
-    console.log(res['movie']);
+    this.movie = movie;
+    this.logo = this.imgUrl + logo.logos[0].file_path;
+    this.trailerUrl = trailer;
+    
 
 
 

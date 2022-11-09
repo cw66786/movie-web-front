@@ -59,4 +59,7 @@ export class MovieListComponent implements OnInit, OnDestroy {
     this.router.navigate([url]);
    
   }
+
+
+  
 }
