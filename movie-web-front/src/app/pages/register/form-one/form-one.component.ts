@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators, AsyncValidatorFn, AsyncValidator } from '@angular/forms';
+import { Observable, of } from 'rxjs';
+
 import { FormErrorService } from 'src/app/core/form-error.service';
 
 @Component({
@@ -31,6 +33,15 @@ export class FormOneComponent implements OnInit {
     const confirmEmail = group.get('confirmEmail')?.value;
     return email !== confirmEmail ? { [this.notSame]: true } : null;
   }
+  
+  
+ emailChecker: AsyncValidatorFn = (control: FormControl): Observable<ValidationErrors> | null => {
+        return of({taken: 'true'});
+ }
+
+
+
+
 }
 
 
