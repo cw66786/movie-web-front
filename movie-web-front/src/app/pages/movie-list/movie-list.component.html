@@ -11,6 +11,8 @@
         *ngFor="let movie of movies" 
         id="{{ movie.id }}"
         (click)="getId(movie.id)"
+        (click)="getScrollPosition($event)"
+        
         >
       <img src="{{ movie.pic }}" alt="{{ movie.title }}" />
       

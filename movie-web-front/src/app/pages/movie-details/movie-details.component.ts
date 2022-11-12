@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Movie } from '../movie-list/interfaces/moviedata';
 import { singleMovie } from '../movie-list/interfaces/single-movie';
-import { MovieService } from 'src/app/core/movie-list services/movie.service';
+import { MovieService } from 'src/app/core/movie-services-resolvers/movie.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { MovieDetailsResolver } from 'src/app/core/movie-list services/movie-details.resolver';
+import { MovieDetailsResolver } from 'src/app/core/movie-services-resolvers/movie-details.resolver';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
