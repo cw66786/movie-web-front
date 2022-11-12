@@ -33,6 +33,13 @@
       >
         Please enter a valid email address
       </mat-error>
+      <mat-error
+        *ngIf="
+          registerForm1.get('email').errors?.['taken'] 
+        "
+      >
+        Email is taken, please choose another.
+      </mat-error>
     </mat-form-field>
     <!-- Confirm Email -->
     <mat-form-field appearance="fill">
