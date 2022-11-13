@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { FormServicesService } from 'src/app/core/auth-services/form-services.service';
 
 @Component({
   selector: 'app-form-two',
@@ -16,7 +17,7 @@ export class FormTwoComponent implements OnInit {
 
   
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder,private formService: FormServicesService) {}
 
   ngOnInit(): void {
     this.registerForm2 = this.fb.group({
@@ -33,6 +34,11 @@ export class FormTwoComponent implements OnInit {
     const password = group.get('password')?.value;
     const confirmPass = group.get('confirmPassword')?.value;
     return password !== confirmPass ? { [this.notSame]: true } : null;
+  }
+
+
+  transferPassword(password: string){
+    this.formService.transferPassword(password);
   }
  
 

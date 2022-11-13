@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroupDirective, NgForm, Validators, FormGroup } from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
+import { FormServicesService } from 'src/app/core/auth-services/form-services.service';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -20,13 +21,19 @@ export class SignInComponent implements OnInit {
   
     email = new FormControl('', [Validators.email, Validators.required ]);
 
-    password = new FormControl('', [Validators.required, Validators.min(8) ]);
+    password = new FormControl('', [Validators.required, Validators.minLength(4) ]);
   
 
   matcher = new MyErrorStateMatcher();
-  constructor() { }
+  constructor(private formService: FormServicesService) { }
 
   ngOnInit(): void {
+  }
+
+
+  transferInfo(userEmail: string,userPassword: string){
+    this.formService.signIn(userEmail,userPassword);
+
   }
 
 }

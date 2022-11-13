@@ -54,6 +54,12 @@ export class FormOneComponent implements OnInit {
  }
 
 
+ transferEmail(email: string){
+    this.formService.transferEmail(email);
+
+ }
+
+
 
 
 }

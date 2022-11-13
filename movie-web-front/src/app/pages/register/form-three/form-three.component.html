@@ -1,43 +1,57 @@
 <div class="wrapper">
   <form class="register-form" [formGroup]="registerForm3">
-    <h1 [ngStyle]="{'text-decoration': 'underline','text-decoration-thickness': '5px','text-underline-offset': '8px'}"><b>Step 3 of 3</b></h1>
-    <h1>Just one more  step, hope the popcorn is ready!!!</h1>
+    <h1
+      [ngStyle]="{
+        'text-decoration': 'underline',
+        'text-decoration-thickness': '5px',
+        'text-underline-offset': '8px'
+      }"
+    >
+      <b>Step 3 of 3</b>
+    </h1>
+    <h1>Just one more step, hope the popcorn is ready!!!</h1>
     <mat-form-field appearance="fill">
-        <mat-label>Username</mat-label>
-        <input
-          type="text"
-          matInput
-          
-          
-          placeholder="Username"
-        />
-    
-       
-      
-      </mat-form-field>
+      <mat-label>Username</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="userName"
+        placeholder="Username"
+        required
+      />
+    </mat-form-field>
     <mat-form-field appearance="fill">
-        <mat-label>TMBD Key</mat-label>
-        <input
-          type="text"
-          matInput
-          
-          
-          placeholder="TMBD Key"
-        />
-    
-       
-      
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Select Role</mat-label>
-        <mat-select>
+      <mat-label>TMDB Key</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="tmdbKey"
+        placeholder="TMBD Key"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Select Role</mat-label>
+      <mat-select required formControlName="role">
         <mat-option value="User">User</mat-option>
-          <mat-option value="Admin">Admin</mat-option>
-          <mat-option value="Super">Super</mat-option>
-        </mat-select>
-      </mat-form-field>
-    <button mat-flat-button color="primary">Register</button>
-    
+        <mat-option value="Admin">Admin</mat-option>
+        <mat-option value="Super">Super</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button
+      mat-flat-button
+      color="primary"
+      routerLink="../../signIn"
+      [disabled]="!registerForm3.valid"
+      (click)="
+        transferInfo(
+          registerForm3.get('userName').value,
+          registerForm3.get('tmdbKey').value,
+          registerForm3.get('role').value
+        )
+      "
+    >
+      Register
+    </button>
   </form>
 </div>
-

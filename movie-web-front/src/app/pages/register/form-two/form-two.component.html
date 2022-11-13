@@ -70,7 +70,13 @@
           
    
   
-    <button mat-flat-button color="primary" routerLink="../form3">
+    <button 
+      mat-flat-button 
+      color="primary" 
+      routerLink="../form3"
+      [disabled]="!registerForm2.valid"
+      (click)="transferPassword(registerForm2.get('password').value)"
+      >
       Next
     </button>
   </form>

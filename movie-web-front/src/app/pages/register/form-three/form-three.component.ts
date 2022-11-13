@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-form-three',
@@ -7,17 +7,23 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./form-three.component.scss']
 })
 export class FormThreeComponent implements OnInit {
-
-  registerForm3 = new FormGroup({
-    tmbdKey: new FormControl('', [ Validators.required ]),
-
-    userName: new FormControl('', [Validators.required]),
-  });    
-
+  registerForm3: FormGroup;
   
-  constructor() { }
-
+  
+  constructor(private fb: FormBuilder) { }
+  
   ngOnInit(): void {
+    this.registerForm3 = this.fb.group ({
+      tmdbKey: new FormControl('', [ Validators.required ]),
+  
+      userName: new FormControl('', [Validators.required]),
+      role: new FormControl('', [Validators.required]),
+    });    
+  }
+
+
+  transferInfo(userName: string, tmdbKey: string, role: string){
+
   }
 
 }
