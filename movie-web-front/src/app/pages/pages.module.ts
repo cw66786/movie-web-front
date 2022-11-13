@@ -11,6 +11,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from '../app-routing.module';
 import {YouTubePlayerModule} from '@angular/youtube-player';
+import {MatSelectModule} from '@angular/material/select';
 
 //components 
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
@@ -59,7 +60,8 @@ const routes: Routes = [
     MatStepperModule,
     HttpClientModule,
     InfiniteScrollModule,
-    YouTubePlayerModule
+    YouTubePlayerModule,
+    MatSelectModule
 
     
   ],
