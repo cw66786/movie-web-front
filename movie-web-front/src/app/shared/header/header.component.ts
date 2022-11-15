@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { NavigationEnd , Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { FormServicesService } from 'src/app/core/auth-services/form-services.service';
 
 @Component({
@@ -7,13 +9,28 @@ import { FormServicesService } from 'src/app/core/auth-services/form-services.se
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  isLoggedIn: boolean;
-  userName: string = "cwilson";
-
-  constructor(private formService: FormServicesService) { }
+  jwtHelper = new JwtHelperService();
+  
+ 
+  constructor(public formService: FormServicesService, public router: Router) { }
 
   ngOnInit(): void {
-    this.formService.signInBehave$.subscribe(res => res === true ? this.isLoggedIn = true :  this.isLoggedIn = false);
+   
+  
+   
+   
+   
   }
+  
+
+  
+
+ 
+getName(){
+  const decodedToken = this.jwtHelper.decodeToken(localStorage.getItem('token'));
+  return decodedToken.username;
+}
+
+  
 
 }

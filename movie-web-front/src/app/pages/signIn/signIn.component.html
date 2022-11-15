@@ -12,7 +12,7 @@
   </div>
   <div class="spacing-wrapper">
     <mat-card class="card">
-      <form class="signIn-form">
+      <form class="signIn-form" (submit)="this.transferInfo(email.value,password.value)">
         <mat-card-title class="card-title">Sign In</mat-card-title>
         <mat-form-field appearance="fill">
           <mat-label>Email</mat-label>
@@ -50,8 +50,9 @@
         <button 
           mat-flat-button 
           color="primary"
-          routerLink="../movies"
-          (click)="transferInfo(email.value,password.value)"
+          
+          type="submit"
+          
           >Sign In</button>
         <span class="register-hint"
           >New to Craig's-Flix?

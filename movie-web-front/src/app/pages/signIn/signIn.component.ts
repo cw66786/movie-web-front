@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroupDirective, NgForm, Validators, FormGroup } from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
+import { Router } from '@angular/router';
 import { FormServicesService } from 'src/app/core/auth-services/form-services.service';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -25,14 +26,18 @@ export class SignInComponent implements OnInit {
   
 
   matcher = new MyErrorStateMatcher();
-  constructor(private formService: FormServicesService) { }
+  constructor(private formService: FormServicesService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
 
   transferInfo(userEmail: string,userPassword: string){
-    this.formService.signIn(userEmail,userPassword);
+    if(this.email.valid && this.password.valid) {
+
+      this.formService.signIn(userEmail,userPassword);
+      this.router.navigateByUrl('/movies');
+    }
 
   }
 

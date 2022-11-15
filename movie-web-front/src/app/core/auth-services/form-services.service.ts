@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, debounceTime, map, of } from 'rxjs';
+import { BehaviorSubject, debounceTime, map, of, tap } from 'rxjs';
 import { User } from '../interfaces/user';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -15,12 +17,20 @@ export class FormServicesService {
   private role: string;
   private user: User;
 
-  signedIn: boolean = false;
-  signInBehave$ = new BehaviorSubject(this.signedIn);
-  signedIn$ = this.signInBehave$.asObservable();
+  jwtHelper = new JwtHelperService();
+
+ 
+
+  currentUser: any = {
+    username: '',
+    role: ''
+  };
+  userBehave$ = new BehaviorSubject(this.currentUser);
+  currentUser$ = this.userBehave$.asObservable();
 
 
-  constructor(private http: HttpClient) { }
+
+  constructor(private http: HttpClient, private router: Router) { }
 
 
   checkEmail(userEmail: string){
@@ -66,7 +76,7 @@ export class FormServicesService {
 
   registerInfo(user: User){
 
-    this.http.post(this.baseUrl + '/auth/signup',{user});
+    this.http.post(this.baseUrl + 'auth/signup',{user});
 
   }
 
@@ -74,9 +84,46 @@ export class FormServicesService {
   //signIn related code
 
   signIn(userEmail: string, userPassword: string){
-    this.http.post(this.baseUrl + '/auth/signin',{email: userEmail,password: userPassword});
-    this.signedIn = true;
-    this.signInBehave$.next(this.signedIn);
+    console.log(userEmail)
+    this.http.post(this.baseUrl + 'auth/signin',{email: userEmail,password: userPassword}).subscribe(res => {
+        console.log(res['role'])
+        const decodedToken = this.jwtHelper.decodeToken(res['accessToken']);
+
+        localStorage.setItem('token',res['accessToken']);
+
+        this.currentUser.username = decodedToken.username;
+        this.currentUser.role = res['role']
+        
+
+
+        this.userBehave$.next(this.currentUser);
+       
+        
+      })
+    
+    
   }
+
+
+  // check if user is logged in 
+
+  isLoggedIn(): boolean{
+    const token = localStorage.getItem('token');
+    return !this.jwtHelper.isTokenExpired(token);
+  }
+
+  //logout 
+
+  logout(){
+    localStorage.removeItem('token');
+
+    this.currentUser = {};
+    this.router.navigateByUrl('');
+    
+  }
+  
+
+
+
 
 }
