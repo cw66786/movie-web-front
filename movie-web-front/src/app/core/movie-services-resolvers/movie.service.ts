@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { BehaviorSubject, map, tap } from 'rxjs';
 import { Images } from 'src/app/pages/movie-list/interfaces/images';
 
@@ -11,10 +12,13 @@ import { Videos } from '../../pages/movie-list/interfaces/videos';
   providedIn: 'root',
 })
 export class MovieService {
+  jwtHelper = new JwtHelperService();
+  private user =  this.jwtHelper.decodeToken(localStorage.getItem('token'));
+
   private baseUrl: string = 'https://api.themoviedb.org/3/movie/';
 
   private apiUrl: string = '?api_key=';
-  private apiKey: string = 'abfded36c088b6b3b0e7e3e0b30e785c';
+  private apiKey: string = this.user.tmdb_key;
   private languageAndPage: string = '&language=en-US&page=';
   private imgUrl: string = 'https://image.tmdb.org/t/p/original';
 
@@ -33,7 +37,9 @@ export class MovieService {
   
 
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+   
+  }
 
   getPopMovies(page: number) {
     return this.http

@@ -14,6 +14,7 @@
     <mat-card class="card">
       <form class="signIn-form" (submit)="this.transferInfo(email.value,password.value)">
         <mat-card-title class="card-title">Sign In</mat-card-title>
+        <mat-error *ngIf="this.loginError === true">Email or Password is Incorrect!</mat-error>
         <mat-form-field appearance="fill">
           <mat-label>Email</mat-label>
           <input

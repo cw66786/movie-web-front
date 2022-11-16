@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, debounceTime, map, of, tap } from 'rxjs';
+import { BehaviorSubject, catchError, debounceTime, map, of, tap } from 'rxjs';
 import { User } from '../interfaces/user';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FormServicesService {
   private baseUrl = 'http://localhost:4231/';
@@ -19,111 +19,104 @@ export class FormServicesService {
 
   jwtHelper = new JwtHelperService();
 
- 
+  loginError: boolean = false;
+  errorBehave$ = new BehaviorSubject(this.loginError);
+  loginError$ = this.errorBehave$.asObservable();
 
   currentUser: any = {
     username: '',
-    role: ''
+    role: '',
   };
   userBehave$ = new BehaviorSubject(this.currentUser);
   currentUser$ = this.userBehave$.asObservable();
 
+  constructor(private http: HttpClient, private router: Router) {}
 
-
-  constructor(private http: HttpClient, private router: Router) { }
-
-
-  checkEmail(userEmail: string){
-
-    return this.http.post(this.baseUrl+ 'auth/check-email',{email: userEmail});
-
+  checkEmail(userEmail: string) {
+    return this.http.post(this.baseUrl + 'auth/check-email', {
+      email: userEmail,
+    });
   }
 
   //register related code
 
-  transferEmail(email: string){
-    console.log(email)
+  transferEmail(email: string) {
+    console.log(email);
     this.userEmail = email;
   }
-  
-  
-  transferPassword(password: string){
-    console.log(password)
+
+  transferPassword(password: string) {
+    console.log(password);
     this.userPassword = password;
   }
 
-  tranferForm3(userName: string,tmdbKey: string, role: string){
-    
+  tranferForm3(userName: string, tmdbKey: string, role: string) {
     this.userName = userName;
     this.tmdbKey = tmdbKey;
     this.role = role;
     this.setInfo();
-
   }
 
-  setInfo(){
-    this.user ={
+  setInfo() {
+    this.user = {
       username: this.userName,
       password: this.userPassword,
       email: this.userEmail,
       role: this.role.toUpperCase(),
       tmdb_key: this.tmdbKey,
-
-    }
+    };
     this.registerInfo(this.user);
   }
 
-
-  registerInfo(user: User){
-
-    this.http.post(this.baseUrl + 'auth/signup',{user});
-
+  registerInfo(user: User) {
+    this.http.post(this.baseUrl + 'auth/signup', { user });
   }
-
 
   //signIn related code
 
-  signIn(userEmail: string, userPassword: string){
-    console.log(userEmail)
-    this.http.post(this.baseUrl + 'auth/signin',{email: userEmail,password: userPassword}).subscribe(res => {
-        console.log(res['role'])
-        const decodedToken = this.jwtHelper.decodeToken(res['accessToken']);
-
-        localStorage.setItem('token',res['accessToken']);
-
-        this.currentUser.username = decodedToken.username;
-        this.currentUser.role = res['role']
+  signIn(userEmail: string, userPassword: string) {
+    this.http
+      .post(
+        this.baseUrl + 'auth/signin',
+        { email: userEmail, password: userPassword },
         
+      )
+      .subscribe({
+        next: (res) => {
+          const decodedToken = this.jwtHelper.decodeToken(res['accessToken']);
+              console.log(res['accessToken'])
+          localStorage.setItem('token', res['accessToken']);
 
+          this.currentUser.username = decodedToken.username;
+          this.currentUser.role = res['role'];
 
-        this.userBehave$.next(this.currentUser);
-       
-        
-      })
-    
-    
+          this.userBehave$.next(this.currentUser);
+          this.router.navigateByUrl('/movies');
+        },
+        error: (error) => {
+          
+          if (error.status === 401) {
+            this.loginError = true;
+            this.errorBehave$.next(this.loginError);
+            this.router.navigateByUrl('/signIn');
+          }
+        },
+      });
   }
 
+  // check if user is logged in
 
-  // check if user is logged in 
-
-  isLoggedIn(): boolean{
+  isLoggedIn(): boolean {
     const token = localStorage.getItem('token');
     return !this.jwtHelper.isTokenExpired(token);
   }
 
-  //logout 
+  //logout
 
-  logout(){
+  logout() {
     localStorage.removeItem('token');
 
     this.currentUser = {};
     this.router.navigateByUrl('');
-    
   }
-  
-
-
-
-
 }

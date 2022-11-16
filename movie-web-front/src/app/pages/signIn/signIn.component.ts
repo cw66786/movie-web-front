@@ -18,17 +18,22 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class SignInComponent implements OnInit {
   hide: boolean = true;
-
+  loginError: boolean;
   
-    email = new FormControl('', [Validators.email, Validators.required ]);
-
-    password = new FormControl('', [Validators.required, Validators.minLength(4) ]);
   
-
+  email = new FormControl('', [Validators.email, Validators.required ]);
+  
+  password = new FormControl('', [Validators.required, Validators.minLength(4) ]);
+  
+  
   matcher = new MyErrorStateMatcher();
-  constructor(private formService: FormServicesService, private router: Router) { }
-
+  constructor(private formService: FormServicesService, private router: Router) {
+    
+    
+  }
+  
   ngOnInit(): void {
+    this.formService.loginError$.subscribe(res => this.loginError = res);
   }
 
 
@@ -36,8 +41,13 @@ export class SignInComponent implements OnInit {
     if(this.email.valid && this.password.valid) {
 
       this.formService.signIn(userEmail,userPassword);
-      this.router.navigateByUrl('/movies');
+      
+      
+     
     }
+
+
+
 
   }
 
