@@ -50,7 +50,7 @@ export class FormServicesService {
     this.userPassword = password;
   }
 
-  tranferForm3(userName: string, tmdbKey: string, role: string) {
+  transferForm3(userName: string, tmdbKey: string, role: string) {
     this.userName = userName;
     this.tmdbKey = tmdbKey;
     this.role = role;
@@ -66,10 +66,14 @@ export class FormServicesService {
       tmdb_key: this.tmdbKey,
     };
     this.registerInfo(this.user);
+    
   }
 
   registerInfo(user: User) {
-    this.http.post(this.baseUrl + 'auth/signup', { user });
+    
+  
+    this.http.post(this.baseUrl + 'auth/signup', user ).subscribe();
+    this.router.navigateByUrl("/signIn");
   }
 
   //signIn related code

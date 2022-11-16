@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormServicesService } from 'src/app/core/auth-services/form-services.service';
 
 @Component({
   selector: 'app-form-three',
@@ -10,7 +11,7 @@ export class FormThreeComponent implements OnInit {
   registerForm3: FormGroup;
   
   
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private formService: FormServicesService) { }
   
   ngOnInit(): void {
     this.registerForm3 = this.fb.group ({
@@ -23,7 +24,7 @@ export class FormThreeComponent implements OnInit {
 
 
   transferInfo(userName: string, tmdbKey: string, role: string){
-
+     this.formService.transferForm3(userName,tmdbKey,role);
   }
 
 }
