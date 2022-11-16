@@ -40,16 +40,16 @@ export class MovieListComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    const position = this.scrollService.scrollPosition.movies;
-
-    if (position) {
-      window.scrollTo(...position);
+    const position = this.scrollService.scrollPosition;
+    if(position > 0){
+      window.scroll(0,position);
     }
   }
 
   ngOnDestroy(): void {
     this.movieService.keepPage(this.page);
     this.movieService.getPopMovies(this.page).unsubscribe();
+    this.scrollService.setPosition(window.scrollY);
    
   }
 
@@ -78,13 +78,5 @@ export class MovieListComponent implements OnInit, AfterViewInit, OnDestroy {
     this.router.navigate([url]);
   }
 
-  getScrollPosition(event: any) {
-    let item = event.target.id;
-
-    let x = event.target.getBoundingClientRect().left;
-    
-    let y= event.target.getBoundingClientRect().top;
-
-    this.scrollService.setPosition(item, x , y );
-  }
+ 
 }

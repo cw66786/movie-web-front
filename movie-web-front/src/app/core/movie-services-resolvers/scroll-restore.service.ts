@@ -5,14 +5,14 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class ScrollRestoreService {
-  private position: any = {};
+  private position: number = 0;
   private position$ = new BehaviorSubject(this.position);
 
 
   constructor() { }
 
-setPosition(name: string,x: number,y: number){
-  this.position[name] = [x,y];
+setPosition(y: number){
+  this.position = y;
   this.position$.next(this.position);
 }
 
