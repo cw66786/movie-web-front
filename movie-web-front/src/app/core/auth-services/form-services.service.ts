@@ -88,7 +88,7 @@ export class FormServicesService {
       .subscribe({
         next: (res) => {
           const decodedToken = this.jwtHelper.decodeToken(res['accessToken']);
-              console.log(res['accessToken'])
+             
           localStorage.setItem('token', res['accessToken']);
 
           this.currentUser.username = decodedToken.username;
@@ -123,4 +123,6 @@ export class FormServicesService {
     this.currentUser = {};
     this.router.navigateByUrl('');
   }
+
+  
 }

@@ -1,10 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminGuard } from './core/guards/admin.guard';
 import { MovieDetailsResolver } from './core/movie-services-resolvers/movie-details.resolver';
 import { HomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [
+  {path: 'changeRole',
+  loadChildren: ()=>
+  import('./pages/role-changer/role-changer-routing.module').then(
+    (mod)=> mod.RoleChangerRoutingModule
+  )
+
+  },
+
   {
+    canActivate: [AdminGuard],
     path: 'movies',
     
     loadChildren: () =>

@@ -24,6 +24,7 @@ import { RegisterComponent } from './register/register.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { HeroComponent } from './home/hero/hero.component';
+import { RoleChangerComponent } from './role-changer/role-changer.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -44,7 +45,8 @@ const routes: Routes = [
     FormTwoComponent,
     FormThreeComponent,
     HomeComponent,
-    HeroComponent
+    HeroComponent,
+    RoleChangerComponent
   ],
   imports: [
     CommonModule,
