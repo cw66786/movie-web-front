@@ -58,7 +58,7 @@
   margin-right: 15px;
   margin-top: 8px;
 
-  color: white;
+  
 }
 
 .header-btn {
@@ -73,9 +73,11 @@
   cursor: pointer;
 }
 
-.user {
-  text-decoration: underline;
-}
+// .user {
+//   text-decoration: underline;
+  
+//   text-decoration-thickness: 2px;
+// }
 
 @media (max-width: 460px) {
   .user,

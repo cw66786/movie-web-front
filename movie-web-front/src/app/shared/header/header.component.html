@@ -22,7 +22,8 @@
         router.url !== '/register/form2' &&
         router.url !== '/register/form3'
       "
-      >User: <span class="user">{{ getName() }}</span></span
+      [style.color]="router.url === '/changeRole'? '#e50914' : '#fff'"
+      >User: <span class="user" >{{ getName() }}</span></span
     >
     <a
       class="header-btn"
