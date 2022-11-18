@@ -89,7 +89,7 @@ export class FormServicesService {
 
           this.currentUser.username = decodedToken.username;
           this.currentUser.role = res['role'];
-
+          localStorage.setItem('user', JSON.stringify(this.currentUser));
           this.userBehave$.next(this.currentUser);
           this.router.navigateByUrl('/movies');
         },
@@ -107,13 +107,20 @@ export class FormServicesService {
 
   isLoggedIn(): boolean {
     const token = localStorage.getItem('token');
-    return !this.jwtHelper.isTokenExpired(token);
+    if (!this.jwtHelper.isTokenExpired(token)) {
+      const user = localStorage.getItem('user');
+
+      this.userBehave$.next(JSON.parse(user));
+      return true;
+    }
+    return false;
   }
 
   //logout
 
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
 
     this.currentUser = {};
     this.router.navigateByUrl('');
@@ -141,12 +148,11 @@ export class FormServicesService {
 
         this.currentUser.username = decodedToken.username;
         this.currentUser.role = res['role'];
-
+        localStorage.setItem('user', JSON.stringify(this.currentUser));
         this.userBehave$.next(this.currentUser);
-        if(this.currentUser.role === 'USER'){
+        if (this.currentUser.role === 'USER') {
           this.router.navigateByUrl('/home');
-        }else{
-
+        } else {
           this.router.navigateByUrl('/movies');
         }
       });
