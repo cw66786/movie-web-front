@@ -1,35 +1,37 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminGuard } from './core/guards/admin.guard';
+import { SuperGuard } from './core/guards/super.guard';
 import { MovieDetailsResolver } from './core/movie-services-resolvers/movie-details.resolver';
 import { HomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [
-  {path: 'changeRole',
-  loadChildren: ()=>
-  import('./pages/role-changer/role-changer-routing.module').then(
-    (mod)=> mod.RoleChangerRoutingModule
-  )
-
+  {
+    path: 'changeRole',
+    loadChildren: () =>
+      import('./pages/role-changer/role-changer-routing.module').then(
+        (mod) => mod.RoleChangerRoutingModule
+      ),
   },
 
   {
     canActivate: [AdminGuard],
     path: 'movies',
-    
+
     loadChildren: () =>
-    import('./pages/movie-list/movie-list-routing.module').then(
-      (mod) => mod.MovieListRoutingModule
+      import('./pages/movie-list/movie-list-routing.module').then(
+        (mod) => mod.MovieListRoutingModule
       ),
-    },
-    {
-      path: 'movie/:id',
-      loadChildren: () =>
-        import('./pages/movie-details/movie-details-routing.module').then(
-          (mod) => mod.MovieDetailsRoutingModule
-        ),
-      resolve: { movie: MovieDetailsResolver },
-    },
+  },
+  {
+    path: 'movie/:id',
+    canActivate: [SuperGuard],
+    loadChildren: () =>
+      import('./pages/movie-details/movie-details-routing.module').then(
+        (mod) => mod.MovieDetailsRoutingModule
+      ),
+    resolve: { movie: MovieDetailsResolver },
+  },
   {
     path: 'register',
     loadChildren: () =>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormServicesService } from 'src/app/core/auth-services/form-services.service';
 
 @Component({
   selector: 'app-role-changer',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RoleChangerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: FormServicesService) { }
 
   ngOnInit(): void {
   }
 
+  transferNewRole(newRole: string){
+    this.service.updateRole(newRole);
+  }
 }

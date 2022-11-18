@@ -11,7 +11,7 @@
             <li>Honestly, why would you choose this?</li>
 
         </ul>
-        <button mat-flat-button color="primary">User</button>
+        <button mat-flat-button color="primary" (click)="transferNewRole('USER')">User</button>
     </mat-card>
     <mat-card class="admin">
         <h2>Admin</h2>
@@ -20,7 +20,7 @@
             <li>Scroll through popular movies anytime</li>
             <li>Honestly, way better than a user!</li>
         </ul>
-        <button mat-flat-button color="primary">Admin</button>
+        <button mat-flat-button color="primary"(click)="transferNewRole('ADMIN')">Admin</button>
     </mat-card>
     <mat-card class="super">
         <h2>Super</h2>
@@ -29,7 +29,7 @@
             <li>Read movie details and watch trailers anytime</li>
             <li>Honestly, this is the obvious choice!</li>
         </ul>
-        <button mat-flat-button color="primary">Super</button>
+        <button mat-flat-button color="primary" (click)="transferNewRole('SUPERUSER')">Super</button>
     </mat-card>
 </div>
 </div>

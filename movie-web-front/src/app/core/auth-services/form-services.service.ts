@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, debounceTime, map, of, tap } from 'rxjs';
 import { User } from '../interfaces/user';
@@ -66,29 +66,25 @@ export class FormServicesService {
       tmdb_key: this.tmdbKey,
     };
     this.registerInfo(this.user);
-    
   }
 
   registerInfo(user: User) {
-    
-  
-    this.http.post(this.baseUrl + 'auth/signup', user ).subscribe();
-    this.router.navigateByUrl("/signIn");
+    this.http.post(this.baseUrl + 'auth/signup', user).subscribe();
+    this.router.navigateByUrl('/signIn');
   }
 
   //signIn related code
 
   signIn(userEmail: string, userPassword: string) {
     this.http
-      .post(
-        this.baseUrl + 'auth/signin',
-        { email: userEmail, password: userPassword },
-        
-      )
+      .post(this.baseUrl + 'auth/signin', {
+        email: userEmail,
+        password: userPassword,
+      })
       .subscribe({
         next: (res) => {
           const decodedToken = this.jwtHelper.decodeToken(res['accessToken']);
-             
+
           localStorage.setItem('token', res['accessToken']);
 
           this.currentUser.username = decodedToken.username;
@@ -98,7 +94,6 @@ export class FormServicesService {
           this.router.navigateByUrl('/movies');
         },
         error: (error) => {
-          
           if (error.status === 401) {
             this.loginError = true;
             this.errorBehave$.next(this.loginError);
@@ -124,5 +119,36 @@ export class FormServicesService {
     this.router.navigateByUrl('');
   }
 
-  
+  //update role
+
+  updateRole(newRole: string) {
+    let token = localStorage.getItem('token');
+
+    const headers_object = new HttpHeaders().set(
+      'Authorization',
+      'Bearer ' + token
+    );
+
+    this.http
+      .patch(
+        this.baseUrl + 'auth/userupdate',
+        { role: newRole },
+        { headers: headers_object }
+      )
+      .subscribe((res) => {
+        const decodedToken = this.jwtHelper.decodeToken(res['accessToken']);
+        localStorage.setItem('token', res['accessToken']);
+
+        this.currentUser.username = decodedToken.username;
+        this.currentUser.role = res['role'];
+
+        this.userBehave$.next(this.currentUser);
+        if(this.currentUser.role === 'USER'){
+          this.router.navigateByUrl('/home');
+        }else{
+
+          this.router.navigateByUrl('/movies');
+        }
+      });
+  }
 }
