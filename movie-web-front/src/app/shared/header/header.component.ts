@@ -31,6 +31,10 @@ getName(){
   return decodedToken.username;
 }
 
+sendToChangeRole(){
+  this.router.navigateByUrl('/changeRole')
+}
+
   
 
 }

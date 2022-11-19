@@ -15,6 +15,7 @@
       >Sign In</a
     >
     <span
+    (click)="sendToChangeRole()"
       class="username"
       *ngIf="
         formService.isLoggedIn() &&
