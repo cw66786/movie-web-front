@@ -14,10 +14,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class MovieDetailsComponent implements OnInit {
   imgUrl: string = 'https://image.tmdb.org/t/p/original';
   trailerUrl: string = '';
-  //  'https://www.youtube.com/embed/';
+
   private movieId: string = '';
   movie!: singleMovie;
   logo: string = '';
+  height: number = 315;
+  width: number = 600;
 
   constructor(
     private movieService: MovieService,
@@ -26,43 +28,20 @@ export class MovieDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.activatedRoute.data.subscribe((res) => {
-    //   this.movie = res['movie'].movie;
-    //   this.logo = this.imgUrl + res['movie'].logo.logos[0].file_path;
-    //   this.trailerUrl = res['movie'].trailer;
-    //   console.log(res['movie']);
-    // });
+    const { movie, logo, trailer } = this.activatedRoute.snapshot.data['movie'];
 
-    const {movie,logo,trailer}= this.activatedRoute.snapshot.data['movie'];
-
-   
     this.movie = movie;
     this.logo = this.imgUrl + logo.logos[0].file_path;
     this.trailerUrl = trailer;
-    
 
+    this.setYoutube();
+  }
 
-
-
-    // this.movieService.clickedMovie$.subscribe(res => {
-    //   if(res === ''){
-    //     this.movieId = localStorage.getItem("movie");
-    //   }else{
-    //     this.movieId = res;
-    //   }
-
-    // });
-    // this.movieService.getOneMovie(this.movieId).subscribe(res => this.movie = res);
-    // this.movieService.getLogo(this.movieId).subscribe(res => this.logo = this.imgUrl + res.logos[0].file_path);
-    // this.movieService.getTrailer(this.movieId).subscribe(res => res.results.every(el => {
-    //   if(el.type === 'Trailer'){
-
-    //     this.trailerUrl = el.key;
-    //     return false
-    //   }
-    //   return true
-    // }));
-
-    // this.storeId(this.movieId);
+  setYoutube() {
+    const screen = window.innerWidth;
+    if (screen <= 620) {
+      this.width = (screen -20)
+      this.height = 0.525*this.width;
+    }
   }
 }

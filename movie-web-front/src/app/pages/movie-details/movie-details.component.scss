@@ -84,24 +84,27 @@
   width: calc(100% - 40px);
 }
 
-@media (max-width: 1300px)  {
+@media (max-width: 1800px)  {
     .hero{
         width: 100vw;
         padding: 0;
     }
-    .info,
+.logo{
+  width: 90%;
+}
+    .logo,
     .trailer{
         padding: auto 20px;
-        width: calc(100% - 40px);
+        width: 50%;
     }
 
-    .trailer iframe{
-        width: 500px;
+    .trailer {
+       justify-content: center;
     }
 }
 
 
-@media (max-width: 550px)  {
+@media (max-width: 1150px)  {
     .wrapper,
     .dark-layer {
             height: 150vh;
@@ -111,6 +114,12 @@
         width: 100vw;
         
         padding: 0;
+    }
+    .logo{
+      width: 100vw;
+    }
+    .logo img{
+      width: 90%;
     }
     .info,
     .trailer{
