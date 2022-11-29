@@ -10,10 +10,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from '../app-routing.module';
-import {YouTubePlayerModule} from '@angular/youtube-player';
-import {MatSelectModule} from '@angular/material/select';
+import { YouTubePlayerModule } from '@angular/youtube-player';
+import { MatSelectModule } from '@angular/material/select';
 
-//components 
+//components
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { FormOneComponent } from './register/form-one/form-one.component';
@@ -26,14 +26,7 @@ import { HomeComponent } from './home/home.component';
 import { HeroComponent } from './home/hero/hero.component';
 import { RoleChangerComponent } from './role-changer/role-changer.component';
 
-const routes: Routes = [
-  { path: '', component: HomeComponent },
-
- 
- 
- 
-  
-];
+const routes: Routes = [{ path: '', component: HomeComponent }];
 
 @NgModule({
   declarations: [
@@ -46,7 +39,7 @@ const routes: Routes = [
     FormThreeComponent,
     HomeComponent,
     HeroComponent,
-    RoleChangerComponent
+    RoleChangerComponent,
   ],
   imports: [
     CommonModule,
@@ -63,10 +56,7 @@ const routes: Routes = [
     HttpClientModule,
     InfiniteScrollModule,
     YouTubePlayerModule,
-    MatSelectModule
-
-    
+    MatSelectModule,
   ],
- 
 })
 export class PagesModule {}

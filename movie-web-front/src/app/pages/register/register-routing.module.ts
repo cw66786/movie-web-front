@@ -17,15 +17,11 @@ const registerRoutes: Routes = [
       { path: '', component: FormOneComponent },
     ],
   },
-]
-
+];
 
 @NgModule({
   declarations: [],
-  imports: [
-   RouterModule.forChild(registerRoutes)
-   
-  ],
-  exports: [RouterModule]
+  imports: [RouterModule.forChild(registerRoutes)],
+  exports: [RouterModule],
 })
-export class RegisterRoutingModule { }
+export class RegisterRoutingModule {}

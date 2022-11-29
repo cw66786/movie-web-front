@@ -4,19 +4,16 @@ import { RouterModule, Routes, Router } from '@angular/router';
 @Component({
   selector: 'app-hero',
   templateUrl: './hero.component.html',
-  styleUrls: ['./hero.component.scss']
+  styleUrls: ['./hero.component.scss'],
 })
 export class HeroComponent implements OnInit {
+  email = new FormControl('', [Validators.email]);
 
-  email = new FormControl('', [Validators.email ]);
+  constructor(private router: Router) {}
 
-
-  constructor(private router: Router) { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onSubmit() {
     this.router.navigateByUrl('/register');
-}
+  }
 }

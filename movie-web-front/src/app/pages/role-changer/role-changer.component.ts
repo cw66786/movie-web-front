@@ -4,16 +4,14 @@ import { FormServicesService } from 'src/app/core/auth-services/form-services.se
 @Component({
   selector: 'app-role-changer',
   templateUrl: './role-changer.component.html',
-  styleUrls: ['./role-changer.component.scss']
+  styleUrls: ['./role-changer.component.scss'],
 })
 export class RoleChangerComponent implements OnInit {
+  constructor(private service: FormServicesService) {}
 
-  constructor(private service: FormServicesService) { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-  }
-
-  transferNewRole(newRole: string){
+  transferNewRole(newRole: string) {
     this.service.updateRole(newRole);
   }
 }

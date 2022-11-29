@@ -5,19 +5,18 @@ import { FormServicesService } from 'src/app/core/auth-services/form-services.se
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
   private role: string;
 
-  constructor(private service: FormServicesService, private router: Router) { }
+  constructor(private service: FormServicesService, private router: Router) {}
 
   ngOnInit(): void {
-    this.service.currentUser$.subscribe(res => this.role = res.role);
-    
-    if(this.service.isLoggedIn() && this.role !== 'USER' ){
+    this.service.currentUser$.subscribe((res) => (this.role = res.role));
+
+    if (this.service.isLoggedIn() && this.role !== 'USER') {
       this.router.navigateByUrl('/movies');
     }
   }
-
 }

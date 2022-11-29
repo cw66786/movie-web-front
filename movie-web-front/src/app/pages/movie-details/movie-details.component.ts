@@ -40,8 +40,8 @@ export class MovieDetailsComponent implements OnInit {
   setYoutube() {
     const screen = window.innerWidth;
     if (screen <= 620) {
-      this.width = (screen -20)
-      this.height = 0.525*this.width;
+      this.width = screen - 20;
+      this.height = 0.525 * this.width;
     }
   }
 }
