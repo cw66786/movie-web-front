@@ -57,6 +57,7 @@ const routes: Routes = [
       scrollOffset: [0, 0],
       scrollPositionRestoration: 'enabled',
       onSameUrlNavigation: 'reload',
+      useHash: true
     }),
   ],
   exports: [RouterModule],
